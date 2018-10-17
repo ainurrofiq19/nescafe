@@ -31,39 +31,25 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
+                  <th>Name Store</th>
+                  <th>Addres</th>
+                  <th>Phone</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach($cetak1 as $data1){?>
                   <tr>
-                    <td><?= $data1->ID_PERMINTAAN?></td>
-                    <td><?= $data1->NAMA_PERMINTAAN?></td>
-                    <td><?= $data1->QTY?></td>
-                    <td><?= $data1->TANGGAL?></td>
-                    <td><?= $data1->TOKO?></td>
-                    <td><?= $data1->BP?></td>
-                    <td><?= $data1->STATUS?></td>
+                    <td><?= $data1->NAMA_TOKO?></td>
+                    <td><?= $data1->ALAMAT_TOKO?></td>
+                    <td><?= $data1->TELEPHONE_TOKO?></td>
+                                       <td>
+                      <a href="" class="btn btn-primary">Edit</a>
+                      <a href="<?php echo base_url(); ?>index.php/Tl/hapus_toko/<?php echo $data1->ID_TOKO; ?>" class="btn btn-danger"> Delete </a>
+                    </td
                   </tr>
                 <?php } ?>
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                </tr>
-                </tfoot>
               </table>
             </div>
             <!-- /.box-body -->

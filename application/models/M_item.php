@@ -14,13 +14,10 @@ public function view_item()
 
     $result = $this->db->query($sql);
     return $result->result();
-
-
  }
-
  function hapus_item($kondisi) {
-        $this->db->where($kondisi);
-        return $this->db->delete('tbl_item');
+ 	 $this->db->where ($kondisi);
+ 	 return $this->db->delete ('tbl_item');
  }
 
 }

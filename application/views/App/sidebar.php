@@ -147,8 +147,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('Tl/view_bp')?>"><i class="fa fa-circle-o"></i>view brand presenter</a></li>
-            <li><a href="<?= base_url('Tl/add_bp')?>"><i class="fa fa-circle-o"></i>Add brand presenter</a></li>
+            <li><a href="<?= base_url('Tl/view_brand_presenter')?>"><i class="fa fa-circle-o"></i>view brand presenter</a></li>
+            <li><a href="<?= base_url('Tl/add_brand_presenter')?>"><i class="fa fa-circle-o"></i>Add brand presenter</a></li>
           </ul>
         </li>
         <li class="treeview">

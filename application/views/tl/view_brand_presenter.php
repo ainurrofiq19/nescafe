@@ -31,39 +31,27 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
+                  <th>Nip</th>
+                  <th>Nama</th>
+                  <th>Addres</th>
+                  <th>Phone</th>
+                  <th>E-mail</th>
+                  <th>Gender</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach($cetak1 as $data1){?>
                   <tr>
-                    <td><?= $data1->ID_PENGIRIMAN?></td>
-                    <td><?= $data1->NAMA_PENGIRIMAN?></td>
-                    <td><?= $data1->QTY?></td>
-                    <td><?= $data1->TANGGAL?></td>
-                    <td><?= $data1->TOKO?></td>
-                    <td><?= $data1->BP?></td>
-                    <td><?= $data1->STATUS?></td>
+                    <td><?= $data1->NIP?></td>
+                    <td><?= $data1->NAMA_PEG?></td>
+                    <td><?= $data1->ALAMAT_PEG?></td>
+                    <td><?= $data1->TLP_PEG?></td>
+                    <td><?= $data1->EMAIL_PEG?></td>
+                    <td><?= $data1->JENIS_KELAMIN?></td>
                   </tr>
                 <?php } ?>
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                </tr>
-                </tfoot>
               </table>
             </div>
             <!-- /.box-body -->
