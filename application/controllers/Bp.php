@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Bp extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model(array('View_of','M_delivery_order','M_item_delivery','M_item_reture'));
+		$this->load->model(array('View_of','M_item_request','M_delivery_order','M_item_delivery','M_item_reture'));
 	}
 
 	public function index()
@@ -16,8 +16,8 @@ class Bp extends CI_Controller {
 
 	public function view_item_request()
 	{
-		$data['cetak1'] = $this->M_delivery_order->view_delivery_order();
-		$data['content'] = 'bp/view_delivery_order';
+		$data['cetak1'] = $this->M_item_request->view_item_request();
+		$data['content'] = 'bp/view_item_request';
 		$this->load->view('template', $data);
 	}
 
