@@ -31,11 +31,12 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
+                  <th>Code item</th>
+                  <th>Name</th>
+                  <th>Price(s)</th>
+                  <th>Photo</th>
+                  <th>Category</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -44,20 +45,17 @@
                     <td><?= $data1->ID_ITEM?></td>
                     <td><?= $data1->NAMA_ITEM?></td>
                     <td><?= $data1->HARGA?></td>
-                    <td><?= $data1->GAMBAR?></td>
+                    <td>
+                      <img style="width: 50px" src="<?= base_url()?>asset/item/<?= $data1->GAMBAR?>">
+                    </td>
                     <td><?= $data1->KATEGORI?></td>
+                    <td>
+                      <a href="" class="btn btn-primary">Edit</a>
+                      <a href="<?php echo base_url(); ?>index.php/Admin/hapus_item/<?php echo $data1->ID_ITEM; ?>" class="btn btn-danger"> Delete </a>
+                    </td>
                   </tr>
                 <?php } ?>
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                </tr>
-                </tfoot>
               </table>
             </div>
             <!-- /.box-body -->

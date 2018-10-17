@@ -20,10 +20,53 @@ class Admin extends CI_Controller {
 		$this->load->view('template', $data);
 	}
 
-	public function add_item()
+		public function add_item()
 	{
-		$this->load->view('template');
+		if ($this->input->server('REQUEST_METHOD') == 'POST') {
+			
+			$file = $this->input->post('code');
+			$config['file_name'] = $file;
+
+			$data = array (
+				'ID_ITEM'			=> $this->input->post('code'),
+				'NAMA_ITEM'			=> $this->input->post('item'),
+				'HARGA_ITEM'		=> $this->input->post('harga'),
+				'FOTO_ITEM'			=> $file.'.jpg',
+				'AI_PRODUK'			=> $this->input->post('kategori')
+			);
+			
+			$config['upload_path']          = './asset/item/';
+			$config['allowed_types']        = 'jpg';
+			$config['max_size']             = 100;
+			$config['max_width']            = 1024;
+			$config['max_height']           = 768;
+	 
+			$this->load->library('upload', $config);
+
+			$this->upload->do_upload('gambar');
+
+			$this->db->insert('tbl_item', $data);
+			redirect('admin/view_item');
+		}
+
+		$data['kat'] = $this->db->query("SELECT * FROM tbl_kategori");
+		$data['content'] = 'Admin/add_item';
+		$this->load->view('template', $data);
 	}
+	
+    public function hapus_item() {
+        if ($this->uri->segment(3) != null) {
+            $ID_ITEM = $this->uri->segment(3);
+            $kondisi = array('ID_ITEM' => $ID_ITEM);
+
+            if ($this->M_item->hapus_item($kondisi)) {
+            	redirect('admin/view_item');
+                echo "berhasil Menghapus data";
+            } else {
+                echo "gagal menghapus data";
+            }
+        }
+  }
 
 	public function view_item_request()
 	{

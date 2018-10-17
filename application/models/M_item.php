@@ -18,4 +18,9 @@ public function view_item()
 
  }
 
+ function hapus_item($kondisi) {
+        $this->db->where($kondisi);
+        return $this->db->delete('tbl_item');
+ }
+
 }
