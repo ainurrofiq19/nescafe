@@ -101,8 +101,28 @@ class Admin extends CI_Controller {
 
 	public function add_item_delivery()
 	{
-		$data['cetak1'] = $this->M_item_delivery->view_item_delivery();
-		$data['content'] = 'Admin/view_item_delivery';
+		if ($this->input->server('REQUEST_METHOD') == 'POST') {
+
+
+			$data = array (
+				'ID_PENGIRIMAN'			=> $this->input->post('code'),
+				'NAMA_PENGIRIMAN'		=> $this->input->post('item'),
+				'JUMLAH_PENGIRIMAN'		=> $this->input->post('jumlah'),
+				'TGL_PENGIRIMAN'		=> $this->input->post('tgl'),
+				'TOKO_PENGIRIMAN'		=> $this->input->post('toko'),
+				'BP_PENGIRIMAN'			=> $this->input->post('bp'),
+				'STATUS_PENGIRIMAN'		=> $this->input->post('status')
+			);
+
+
+			$this->db->insert('tbl_pengiriman', $data);
+			redirect('admin/view_item_delivery');
+		}
+
+		$data['itkat'] = $this->db->query("SELECT * FROM tbl_item");
+		$data['kat'] = $this->db->query("SELECT * FROM tbl_toko");
+		$data['bpkat'] = $this->db->query("SELECT * FROM tbl_pegawai");
+		$data['content'] = 'Admin/add_item_delivery';
 		$this->load->view('template', $data);
 	}
 
