@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Bp extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model(array('View_of','M_item_request','M_delivery_order','M_item_delivery','M_item_reture'));
+		$this->load->model(array('View_of','M_item_request','M_item_delivery','M_item_reture'));
 	}
 
 	public function index()

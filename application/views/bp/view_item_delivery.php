@@ -20,8 +20,9 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
+
         <div class="col-xs-12">
-          
+
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Data Table With Full Features</h3>
@@ -31,25 +32,23 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Rendering engine</th>
+                  <th>KODE PENGIRIMAN</th>
                   <th>Browser</th>
                   <th>Platform(s)</th>
                   <th>Engine version</th>
                   <th>CSS grade</th>
-                  <th>Engine version</th>
                   <th>CSS grade</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach($cetak1 as $data1){?>
                   <tr>
-                    <td><?= $data1->ID_PENGIRIMAN?></td>
-                    <td><?= $data1->NAMA_PENGIRIMAN?></td>
-                    <td><?= $data1->QTY?></td>
+                    <td><?= $data1->KODE_PENGIRIMAN?></td>
                     <td><?= $data1->TANGGAL?></td>
                     <td><?= $data1->TOKO?></td>
                     <td><?= $data1->BP?></td>
                     <td><?= $data1->STATUS?></td>
+                    <td><a href="<?= base_url("Admin/add_item_delivery/$data1->KODE_PENGIRIMAN")?>" class="btn btn-primary">Check</a></td>
                   </tr>
                 <?php } ?>
                 </tbody>
@@ -60,7 +59,6 @@
                   <th>Platform(s)</th>
                   <th>Engine version</th>
                   <th>CSS grade</th>
-                  <th>Engine version</th>
                   <th>CSS grade</th>
                 </tr>
                 </tfoot>
@@ -76,4 +74,3 @@
     </section>
     <!-- /.content -->
   </div>
-

@@ -5,10 +5,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?= base_url()?>tema/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="<?= base_url()?>asset/user/<?=$this->session->userdata('gambar')?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>
+           <p>
             <?php 
               echo $this->session->userdata('nickname');
               $level = $this->session->userdata('level');
@@ -57,14 +57,14 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
-            <span>delivery order</span>
+            <span>Employee</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('Admin/view_delivery_order')?>"><i class="fa fa-circle-o"></i>view delivery order</a></li>
-            <li><a href="<?= base_url('Admin/add_delivery_order')?>"><i class="fa fa-circle-o"></i>Add delivery order</a></li>
+            <li><a href="<?= base_url('Admin/view_employee')?>"><i class="fa fa-circle-o"></i>view Employee</a></li>
+            <li><a href="<?= base_url('Admin/add_employee')?>"><i class="fa fa-circle-o"></i>Add Employee</a></li>
           </ul>
         </li>
          <li class="treeview">
@@ -77,7 +77,6 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?= base_url('Admin/view_item_delivery')?>"><i class="fa fa-circle-o"></i>view item delivery</a></li>
-            <li><a href="<?= base_url('Admin/add_item_delivery')?>""><i class="fa fa-circle-o"></i>Add item delivery</a></li>
           </ul>
         </li>
 

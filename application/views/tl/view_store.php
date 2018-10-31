@@ -34,6 +34,8 @@
                   <th>Name Store</th>
                   <th>Addres</th>
                   <th>Phone</th>
+                  <th>City</th>
+                  <th>Email</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -43,9 +45,12 @@
                     <td><?= $data1->NAMA_TOKO?></td>
                     <td><?= $data1->ALAMAT_TOKO?></td>
                     <td><?= $data1->TELEPHONE_TOKO?></td>
-                                       <td>
-                      <a href="" class="btn btn-primary">Edit</a>
-                      <a href="<?php echo base_url(); ?>index.php/Tl/hapus_toko/<?php echo $data1->ID_TOKO; ?>" class="btn btn-danger"> Delete </a>
+                    <td><?= $data1->KOTA_TOKO?></td>
+                    <td><?= $data1->EMAIL_TOKO?></td>
+                    <td>
+                      <a href="<?php echo site_url('Tl/form_edit_toko/'.$data1->ID_TOKO);?>" class="btn btn-primary">Edit</a>
+                      <a href="<?php echo base_url(); ?>index.php/Tl/hapus_store/<?php echo $data1->ID_TOKO; ?>" class="btn btn-danger"> Delete </a>
+    <button href="<?php site_url('Tl/view_brand_presenter')?>">cok</button>
                     </td
                   </tr>
                 <?php } ?>

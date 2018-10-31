@@ -49,12 +49,24 @@
                     <input type="text" class="form-control" placeholder="alamat" name="alamattoko">
                   </div>
                 </div>
-              <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Telephone Store</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" placeholder="telephone" name="tlptoko">
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Telephone Store</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" placeholder="telephone" name="tlptoko">
+                    </div>
                   </div>
-                </div>
+                  <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label"> city</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" placeholder="kota" name="kotatoko">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Email Store</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" placeholder="email " name="emailtoko">
+                    </div>
+                  </div>
                 
               </div>
 

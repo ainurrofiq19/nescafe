@@ -17,13 +17,33 @@ public function view_brand_presenter()
 		-- tbl_pegawai.FOTO_PEG AS FOTO_PEG,
 		-- tbl_pegawai.LEVEL AS LEVEL
  		FROM tbl_pegawai 
-        WHERE LEVEL = 2";
+        WHERE LEVEL = 2 and tbl_pegawai.AKTIF='y'";
 
     $result = $this->db->query($sql);
     return $result->result();
 
-
-
  }
+
+ public function hapus_brand_presenter($id){
+	$sql= "UPDATE tbl_pegawai SET AKTIF ='n' WHERE NIP = '$id'";
+		// var_dump($sql);
+	$result = $this->db->query($sql);
+}
+
+public function find($NIP)//للبحث عن رقم المنتج وتحقق من وجوده 
+			//this is for find record id->product
+		{ 
+			$code = $this->db->where('NIP',$NIP)
+							->limit(1)
+							->get('tbl_pegawai');
+			if ($code->num_rows() > 0 )
+				{
+					return $code->row();
+				}else {
+					return array();
+				}//end if code->num_rows > 0 
+				
+		}//end function find
+
 
 }

@@ -74,7 +74,10 @@ class Controller_login extends CI_Controller{
             'nip' => $row->NIP,
 						'nickname' => $row->NAMA_PEG,
 						'level' => $row->LEVEL,
+                        'gambar' => $row->FOTO_PEG
         );
+        print_r($sess);
+
         $this->session->set_userdata($sess);
 
 

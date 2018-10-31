@@ -34,7 +34,34 @@ class Spv extends CI_Controller {
 
 	public function add_news()
 	{
-		$this->load->view('template');
+		if ($this->input->server('REQUEST_METHOD') == 'POST') {
+			
+			$file = $this->input->post('judul');
+			$config['file_name'] = $file;
+
+			$data = array (
+				'ID_BERITA'			=> '',
+				'JUDUL_BERITA'		=> $this->input->post('judul'),
+				'ISI_BERITA'		=> $this->input->post('isi'),
+				'FOTO_BERITA'		=> $file.'.jpg'
+			);
+			
+			$config['upload_path']          = './asset/berita/';
+			$config['allowed_types']        = 'jpg';
+			$config['max_size']             = 10000;
+
+	 
+			$this->load->library('upload', $config);
+
+			$this->upload->do_upload('gambar');
+
+			$this->db->insert('tbl_berita', $data);
+			redirect('spv/view_news');
+		}
+
+		$data['kat'] = $this->db->query("SELECT * FROM tbl_berita");
+		$data['content'] = 'spv/add_news';
+		$this->load->view('template', $data);
 	}
 
 	public function view_report()

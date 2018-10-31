@@ -49,6 +49,12 @@
                     <td><?= $data1->TLP_PEG?></td>
                     <td><?= $data1->EMAIL_PEG?></td>
                     <td><?= $data1->JENIS_KELAMIN?></td>
+                    <td>
+                      <!-- 'admin/products/edit/'.$product->pro_id, -->
+                      <a href="<?php echo base_url(); ?>index.php/Tl/edit_brand_presenter/<?php echo $data1->NIP; ?>" class="btn btn-primary">Edit</a>
+                      <a href="<?php echo base_url(); ?>index.php/Tl/hapus_brand_presenter/<?php echo $data1->NIP; ?>" class="btn btn-danger"> Delete </a>
+                      <a href="<?php echo site_url('Tl/detail_brand_presenter/'.$data1->NIP);?>" class="btn btn-success">Detail</a>
+                    </td>
                   </tr>
                 <?php } ?>
                 </tbody>

@@ -50,7 +50,8 @@
                     </td>
                     <td><?= $data1->KATEGORI?></td>
                     <td>
-                      <a href="" class="btn btn-primary">Edit</a>
+                      <!-- 'admin/products/edit/'.$product->pro_id, -->
+                      <a href="<?php echo base_url(); ?>index.php/Admin/edit_item/<?php echo $data1->ID_ITEM; ?>" class="btn btn-primary">Edit</a>
                       <a href="<?php echo base_url(); ?>index.php/Admin/hapus_item/<?php echo $data1->ID_ITEM; ?>" class="btn btn-danger"> Delete </a>
                     </td>
                   </tr>

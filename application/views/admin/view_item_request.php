@@ -31,13 +31,13 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
+                  <th>Code request</th>
+                  <th>item</th>
+                  <th>Qty(s)</th>
+                  <th>Date</th>
+                  <th>Store</th>
+                  <th>Brand Presenter</th>
+                  <th>status</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,15 +54,7 @@
                 <?php } ?>
                 </tbody>
                 <tfoot>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                </tr>
+               
                 </tfoot>
               </table>
             </div>
