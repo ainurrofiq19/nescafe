@@ -23,7 +23,7 @@
 <div class="col-md-4">
           <!-- Horizontal Form -->
           <div class="box box-info">
-            <form class="form-horizontal" action="<?= base_url('admin/add_item_delivery/'.$code)?>"
+            <form class="form-horizontal" action="<?= base_url('admin/update_item_delivery/'.$code)?>"
               enctype="multipart/form-data" method="post">
             <div class="box-header with-border">
               <h3 class="box-title">KODE KIRIM :</h3>
@@ -63,10 +63,9 @@
 
               </div>
 
-            
               <!-- /.box-body -->
               <div class="box-footer">
-                <a href="<?php echo base_url(); ?>index.php/Admin/cencel_item_delivery/<?=$code?>" class="btn btn-primary">Cencel</a>
+               
                 <button type="submit" class="btn btn-info pull-right">ADD ITEM</button>
               </div>
 
@@ -111,7 +110,7 @@
           <?php if ($tanda == $data1->ID_PENGIRIMAN) { ?>
 
               <tr>
-                <form class="form-horizontal" action="<?= base_url('Admin/edit_item_delivery')?>" method="post">
+                <form class="form-horizontal" action="<?= base_url('Admin/edit_item_delivery2')?>" method="post">
                 <td><?= $data1->KODE_PENGIRIMAN?></td>
                 <td><?= $data1->ITEM?></td>
                 <td>
@@ -136,8 +135,8 @@
               <td><?= $data1->QTY?></td>
               <td><?= $data1->HARGA?></td>
               <td><?php echo $tot?></td>
-              <td><a href="<?= base_url("Admin/add_item_delivery2/$code/$data1->ID_PENGIRIMAN")?>" class="btn btn-primary small">Edit</a>
-                  <a href="<?= base_url("Admin/hapus_item_delivery/$data1->KODE_PENGIRIMAN/$code")?>" class="btn btn-danger small">Hapus</a></td>
+              <td><a href="<?= base_url("Admin/update_item_delivery2/$code/$data1->ID_PENGIRIMAN")?>" class="btn btn-primary small">Edit</a>
+                  <a href="<?= base_url("Admin/hapus_item_delivery2/$data1->KODE_PENGIRIMAN/$code")?>" class="btn btn-danger small">Hapus</a></td>
             </tr>
           <?php } ?>
         <?php } ?>
@@ -151,14 +150,19 @@
           <th><?= $total?></th>
           <th></th>
         </tr>
+
         </tfoot>
       </table>
-
-      <a href="<?php echo base_url(); ?>index.php/Admin/view_item_delivery" class="btn btn-success pull-right">SAVE ITEM</a>
-    </div>
+        
+               
+           <a href="<?php echo base_url(); ?>index.php/Admin/view_item_delivery" class="btn btn-success pull-right">Done</a>
+    
+              </div>
+      
 
     <!-- /.box-body -->
   </div>
+
         </div>
         <!-- /.col -->
       </div>

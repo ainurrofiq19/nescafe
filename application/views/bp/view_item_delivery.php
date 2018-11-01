@@ -28,16 +28,16 @@
               <h3 class="box-title">Data Table With Full Features</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+           <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>KODE PENGIRIMAN</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                  <th>CSS grade</th>
+                  <th>No Order</th>
+                  <th>Date</th>
+                  <th>Store</th>
+                  <th>Brand Presenter</th>
+                  <th>Status</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,20 +48,13 @@
                     <td><?= $data1->TOKO?></td>
                     <td><?= $data1->BP?></td>
                     <td><?= $data1->STATUS?></td>
-                    <td><a href="<?= base_url("Admin/add_item_delivery/$data1->KODE_PENGIRIMAN")?>" class="btn btn-primary">Check</a></td>
+                    <td>
+                      <!-- <button onclick="location.href='<?= base_url("Admin/detail_item_delivery/$data1->KODE_PENGIRIMAN")?>'"class="btn btn-warning">tes</button> -->
+                    <a href="<?= base_url("Admin/detail_item_delivery/$data1->KODE_PENGIRIMAN")?>" class="btn btn-success">Detail</a>
+                  </td>
                   </tr>
                 <?php } ?>
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                  <th>CSS grade</th>
-                </tr>
-                </tfoot>
               </table>
             </div>
             <!-- /.box-body -->
