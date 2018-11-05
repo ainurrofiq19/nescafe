@@ -31,27 +31,27 @@
          <li class="treeview">
           <a href="">
             <i class="fa fa-pie-chart"></i>
-            <span>item</span>
+            <span>Products</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('Admin/view_item')?>"><i class="fa fa-circle-o"></i>view item</a></li>
-            <li><a href="<?= base_url('Admin/add_item')?>"><i class="fa fa-circle-o"></i> add item</a></li>
+            <li><a href="<?= base_url('Admin/view_item')?>"><i class="fa fa-circle-o"></i>View Product</a></li>
+            <li><a href="<?= base_url('Admin/add_item')?>"><i class="fa fa-circle-o"></i> Add Product</a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>
-            <span>item request</span>
+            <span>Product request</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('Admin/view_item_request')?>"><i class="fa fa-circle-o"></i>view item request</a></li>
-            <li><a href="<?= base_url('Admin/accepting_item_request')?>"><i class="fa fa-circle-o"></i> accepting item request</a></li>
+            <li><a href="<?= base_url('Admin/view_item_request')?>"><i class="fa fa-circle-o"></i>View Product request</a></li>
+            <li><a href="<?= base_url('Admin/accepting_item_request')?>"><i class="fa fa-circle-o"></i> Accepting Product request</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -63,20 +63,20 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('Admin/view_employee')?>"><i class="fa fa-circle-o"></i>view Employee</a></li>
+            <li><a href="<?= base_url('Admin/view_employee')?>"><i class="fa fa-circle-o"></i>View Employee</a></li>
             <li><a href="<?= base_url('Admin/add_employee')?>"><i class="fa fa-circle-o"></i>Add Employee</a></li>
           </ul>
         </li>
          <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
-            <span>item delivery</span>
+            <span>Product delivery</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('Admin/view_item_delivery')?>"><i class="fa fa-circle-o"></i>view item delivery</a></li>
+            <li><a href="<?= base_url('Admin/view_item_delivery')?>"><i class="fa fa-circle-o"></i>view Product delivery</a></li>
           </ul>
         </li>
 

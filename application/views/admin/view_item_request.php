@@ -32,8 +32,8 @@
                 <thead>
                 <tr>
                   <th>Code request</th>
-                  <th>item</th>
-                  <th>Qty(s)</th>
+                  <th>Product</th>
+                  <th>Qty</th>
                   <th>Date</th>
                   <th>Store</th>
                   <th>Brand Presenter</th>

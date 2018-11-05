@@ -31,9 +31,9 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Code item</th>
-                  <th>Name</th>
-                  <th>Price(s)</th>
+                  <th>Product Code</th>
+                  <th>Product Name</th>
+                  <th>Price</th>
                   <th>Photo</th>
                   <th>Category</th>
                   <th>Action</th>

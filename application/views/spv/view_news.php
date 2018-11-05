@@ -46,6 +46,12 @@
                      <td>
                       <img style="width: 50px" src="<?= base_url()?>asset/berita/<?= $data1->FOTO?>" >
                     </td>
+                     <td>
+                      <!-- 'admin/products/edit/'.$product->pro_id, -->
+                      <a class="btn btn-success">Detail</a>
+                      <a href="<?php echo base_url(); ?>index.php/Spv/edit_news/<?php echo $data1->ID_BERITA; ?>" class="btn btn-primary">Edit</a>
+                      <a class="btn btn-danger"> Delete </a>
+                    </td>
                   </tr>
                 <?php } ?>
                 </tbody>

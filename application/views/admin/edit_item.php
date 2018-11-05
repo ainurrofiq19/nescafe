@@ -37,26 +37,26 @@
 
               <div class="box-body">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Code Item <?php echo $set ?></label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Product Code </label>
                   <div class="col-sm-8">
 
                     <input type="text" class="form-control" value="<?= $cetak->ID_ITEM ?>" name="code">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Nama Item</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Product Name</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" value="<?= $cetak->NAMA_ITEM ?>" name="item">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Harga</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Price</label>
                   <div class="col-sm-8">
                     <input type="number" class="form-control" value="<?= $cetak->HARGA_ITEM ?>" name="harga">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">kategori</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Category</label>
                   <div class="col-sm-8" >
                     <select class="form-control" name="kategori">
                       <?php foreach($kat->result_array() as $cat){ ?>
@@ -66,7 +66,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Gambar</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label"> Product Photo</label>
 
                     <img src="<?= base_url()?>asset/item/<?= $cetak->FOTO_ITEM ?>" height="142" width="142">
 

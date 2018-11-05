@@ -37,7 +37,7 @@ class Admin extends CI_Controller {
 
 			$config['upload_path']          = './asset/item/';
 			$config['allowed_types']        = 'jpg';
-			$config['max_size']             = 10000;
+			$config['max_size']             = 100000000;
 			$this->load->library('upload', $config);
 			$this->upload->do_upload('gambar');
 
@@ -67,9 +67,7 @@ class Admin extends CI_Controller {
 
 			$config['upload_path']          = './asset/temp/';
 			$config['allowed_types']        = 'jpg';
-			$config['max_size']             = 10000;
-			$config['max_width']            = 10240;
-			$config['max_height']           = 7680;
+			$config['max_size']             = 100000000;
 			$this->load->library('upload', $config);
 			$this->upload->do_upload('gambar');
 			$size = filesize("asset/item/$kode_gambar");
@@ -160,7 +158,7 @@ class Admin extends CI_Controller {
 
 			$config['upload_path']          = './asset/user/';
 			$config['allowed_types']        = 'jpg';
-			$config['max_size']             = 10000;
+			$config['max_size']             = 100000000;
 			$this->load->library('upload', $config);
 			$this->upload->do_upload('gambar');
 
@@ -189,9 +187,8 @@ class Admin extends CI_Controller {
 
 		$config['upload_path']          = './asset/temp/';
 		$config['allowed_types']        = 'jpg';
-		$config['max_size']             = 10000;
-		$config['max_width']            = 10240;
-		$config['max_height']           = 7680;
+		$config['max_size']             = 100000000;
+
 
 		$this->load->library('upload', $config);
 
