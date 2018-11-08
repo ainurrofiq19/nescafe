@@ -37,7 +37,7 @@ class Admin extends CI_Controller {
 
 			$config['upload_path']          = './asset/item/';
 			$config['allowed_types']        = 'jpg';
-			$config['max_size']             = 100000000;
+			$config['max_size']             = 10000;
 			$this->load->library('upload', $config);
 			$this->upload->do_upload('gambar');
 
@@ -67,7 +67,9 @@ class Admin extends CI_Controller {
 
 			$config['upload_path']          = './asset/temp/';
 			$config['allowed_types']        = 'jpg';
-			$config['max_size']             = 100000000;
+			$config['max_size']             = 10000;
+			$config['max_width']            = 10240;
+			$config['max_height']           = 7680;
 			$this->load->library('upload', $config);
 			$this->upload->do_upload('gambar');
 			$size = filesize("asset/item/$kode_gambar");
@@ -158,7 +160,7 @@ class Admin extends CI_Controller {
 
 			$config['upload_path']          = './asset/user/';
 			$config['allowed_types']        = 'jpg';
-			$config['max_size']             = 100000000;
+			$config['max_size']             = 10000;
 			$this->load->library('upload', $config);
 			$this->upload->do_upload('gambar');
 
@@ -187,8 +189,9 @@ class Admin extends CI_Controller {
 
 		$config['upload_path']          = './asset/temp/';
 		$config['allowed_types']        = 'jpg';
-		$config['max_size']             = 100000000;
-
+		$config['max_size']             = 10000;
+		$config['max_width']            = 10240;
+		$config['max_height']           = 7680;
 
 		$this->load->library('upload', $config);
 
@@ -262,7 +265,7 @@ function hapus_employee($NIP){
 		$data['content'] = 'Admin/detail_employee';
 		$this->load->view('template', $data);
 	}
-	
+
 	public function add_code_delivery()
 	{
 			$data = array (
@@ -382,7 +385,7 @@ public function edit_item_delivery()
 		$this->load->view('template', $data);
 	}
 
-		public function update_item_delivery($kode_kirim)
+	public function update_item_delivery($kode_kirim)
 	{
 		$data['tanda'] = 0;
 		if ($this->input->server('REQUEST_METHOD') == 'POST') {
@@ -420,6 +423,7 @@ public function edit_item_delivery()
 
 		$this->load->view('template', $data);
 	}
+
 	public function update_item_delivery2($kode_kirim,$kode_item)
 	{
 		if ($this->input->server('REQUEST_METHOD') == 'POST') {
@@ -477,7 +481,7 @@ public function hapus_item_delivery2($id,$kode_id)
  function cencel_item_delivery($id)
 	{
      $kode_kirim = $this->uri->segment(3);
-  
+
      $this->M_item_delivery->cencel_item_delivery($kode_kirim) ;
         {
        		 redirect('admin/view_item_delivery');

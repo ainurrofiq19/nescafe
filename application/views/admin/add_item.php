@@ -32,25 +32,25 @@
               enctype="multipart/form-data" method="post">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Product Code</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Code Item</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" placeholder="Product Code" name="code">
+                    <input type="text" class="form-control" placeholder="Code Item" name="code">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Product Name</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Nama Item</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" placeholder="Product Name" name="item">
+                    <input type="text" class="form-control" placeholder="Nama" name="item">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Price</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Harga</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" placeholder="price" name="harga">
+                    <input type="number" class="form-control" placeholder="Harga" name="harga">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Category</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">kategori</label>
                   <div class="col-sm-8" >
                     <select class="form-control" name="kategori">
                       <?php foreach($kat->result_array() as $cat){ ?>
@@ -60,7 +60,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Photo</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Gambar</label>
                   <div class="col-sm-10">
                     <input type="file" name="gambar" size="20" />  
                   </div>

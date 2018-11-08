@@ -31,25 +31,38 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Judul</th>
-                  <th>Isi</th>
-                  <th>Foto</th>
-                  <th>Action</th>
+                  <th>Rendering engine</th>
+                  <th>Browser</th>
+                  <th>Platform(s)</th>
+                  <th>Engine version</th>
+                  <th>CSS grade</th>
+                  <th>Engine version</th>
+                  <th>CSS grade</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach($cetak1 as $data1){?>
                   <tr>
-                    <td><?= $data1->JUDUL?></td>
-                    <td><?= $data1->ISI?></td>
-                    <!-- <td><?= $data1->FOTO?></td> -->
-                     <td>
-                      <img style="width: 50px" src="<?= base_url()?>asset/berita/<?= $data1->FOTO?>" >
-                    </td>
+                    <td><?= $data1->ID_PENGIRIMAN?></td>
+                    <td><?= $data1->NAMA_PENGIRIMAN?></td>
+                    <td><?= $data1->QTY?></td>
+                    <td><?= $data1->TANGGAL?></td>
+                    <td><?= $data1->TOKO?></td>
+                    <td><?= $data1->BP?></td>
+                    <td><?= $data1->STATUS?></td>
                   </tr>
                 <?php } ?>
                 </tbody>
                 <tfoot>
+                <tr>
+                  <th>Rendering engine</th>
+                  <th>Browser</th>
+                  <th>Platform(s)</th>
+                  <th>Engine version</th>
+                  <th>CSS grade</th>
+                  <th>Engine version</th>
+                  <th>CSS grade</th>
+                </tr>
                 </tfoot>
               </table>
             </div>

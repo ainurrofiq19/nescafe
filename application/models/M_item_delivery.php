@@ -35,12 +35,12 @@ public function view_item_delivery2($where)
  }
 public function detail_item_delivery2($where)
  {
-      
+
   }
 
 public function find($KODE_PENGIRIMAN){
 
-         $sql = "SELECT 
+         $sql = "SELECT
     tbl_pengiriman.ID_PENGIRIMAN,
     tbl_pengiriman.KODE_PENGIRIMAN,
     tbl_pengiriman.NAMA_PENGIRIMAN AS NAMA_PENGIRIMAN,
@@ -56,7 +56,7 @@ public function find($KODE_PENGIRIMAN){
     tbl_toko.TLP_TOKO,
     tbl_toko.EMAIL_TOKO
     FROM tbl_pengiriman , tbl_item ,tbl_toko, tbl_pegawai
-        WHERE tbl_pengiriman.KODE_PENGIRIMAN='$KODE_PENGIRIMAN' 
+        WHERE tbl_pengiriman.KODE_PENGIRIMAN='$KODE_PENGIRIMAN'
         AND tbl_pengiriman.NAMA_PENGIRIMAN=tbl_item.ID_ITEM
         AND tbl_pengiriman.TOKO_PENGIRIMAN=tbl_toko.ID_TOKO
         AND tbl_pengiriman.BP_PENGIRIMAN=tbl_pegawai.NIP
@@ -78,8 +78,18 @@ public function find($KODE_PENGIRIMAN){
       $this->db->where($where);
 
       $query = $this->db->get();
-      
+
    }
+
+  function view_accepting_delivery($where)
+  {
+     $this->db->select("*");
+     $this->db->from("tbl_pengiriman");
+     $this->db->where("TOKO_PENGIRIMAN", $where);
+     $this->db->group_by("KODE_PENGIRIMAN");
+     $query = $this->db->get();
+     return $query;
+  }
 
 
    public function cencel_item_delivery($kode_kirim){
@@ -87,6 +97,6 @@ public function find($KODE_PENGIRIMAN){
   $sql= "DELETE FROM tbl_pengiriman WHERE KODE_PENGIRIMAN ='$kode_kirim'";
 
   $result = $this->db->query($sql);
-   
+
    }
 }

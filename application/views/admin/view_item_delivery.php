@@ -1,18 +1,12 @@
   <?php
-  
+
     foreach ($lastcode->result_array() as $code) {
       $printcode = $code['KODE_PENGIRIMAN'];
-
-
-
     }
     $a = 'MSD-SBY-DO-';
     $b = date('Y-');
     $x = substr($printcode,16);
     $i = array($x,1)
-   
-   
-  
   ?>
 
 
@@ -126,9 +120,17 @@
                     <td><?= $data1->BP?></td>
                     <td><?= $data1->STATUS?></td>
                     <td>
-                      <!-- <button onclick="location.href='<?= base_url("Admin/detail_item_delivery/$data1->KODE_PENGIRIMAN")?>'"class="btn btn-warning">tes</button> -->
-                    <a href="<?= base_url("Admin/detail_item_delivery/$data1->KODE_PENGIRIMAN")?>" class="btn btn-success">Detail</a>
-                    <a href="<?= base_url("Admin/update_item_delivery/$data1->KODE_PENGIRIMAN")?>" class="btn btn-primary">Update</a>
+                    <?php 
+                    if ($data1->STATUS == 2 ) { ?>
+                      <a href="<?= base_url("Admin/detail_item_delivery/$data1->KODE_PENGIRIMAN")?>" class="btn btn-success">Detail</a>
+                      <a  class="btn btn-default">Be Accepted</a>
+                <?php    }else{ ?>
+                      <a href="<?= base_url("Admin/detail_item_delivery/$data1->KODE_PENGIRIMAN")?>" class="btn btn-success">Detail</a>
+                      <a href="<?= base_url("Admin/update_item_delivery/$data1->KODE_PENGIRIMAN")?>" class="btn btn-primary">Update</a>
+                  <?php  }
+                  ?>
+                   
+                    
                   </td>
                   </tr>
                 <?php } ?>

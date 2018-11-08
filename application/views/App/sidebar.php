@@ -9,12 +9,12 @@
         </div>
         <div class="pull-left info">
            <p>
-            <?php 
+            <?php
               echo $this->session->userdata('nickname');
               $level = $this->session->userdata('level');
 
             ?>
-            
+
           </p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -31,27 +31,27 @@
          <li class="treeview">
           <a href="">
             <i class="fa fa-pie-chart"></i>
-            <span>Products</span>
+            <span>item</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('Admin/view_item')?>"><i class="fa fa-circle-o"></i>View Product</a></li>
-            <li><a href="<?= base_url('Admin/add_item')?>"><i class="fa fa-circle-o"></i> Add Product</a></li>
+            <li><a href="<?= base_url('Admin/view_item')?>"><i class="fa fa-circle-o"></i>view item</a></li>
+            <li><a href="<?= base_url('Admin/add_item')?>"><i class="fa fa-circle-o"></i> add item</a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>
-            <span>Product request</span>
+            <span>item request</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('Admin/view_item_request')?>"><i class="fa fa-circle-o"></i>View Product request</a></li>
-            <li><a href="<?= base_url('Admin/accepting_item_request')?>"><i class="fa fa-circle-o"></i> Accepting Product request</a></li>
+            <li><a href="<?= base_url('Admin/view_item_request')?>"><i class="fa fa-circle-o"></i>view item request</a></li>
+            <li><a href="<?= base_url('Admin/accepting_item_request')?>"><i class="fa fa-circle-o"></i> accepting item request</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -63,20 +63,20 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('Admin/view_employee')?>"><i class="fa fa-circle-o"></i>View Employee</a></li>
+            <li><a href="<?= base_url('Admin/view_employee')?>"><i class="fa fa-circle-o"></i>view Employee</a></li>
             <li><a href="<?= base_url('Admin/add_employee')?>"><i class="fa fa-circle-o"></i>Add Employee</a></li>
           </ul>
         </li>
          <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
-            <span>Product delivery</span>
+            <span>item delivery</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('Admin/view_item_delivery')?>"><i class="fa fa-circle-o"></i>view Product delivery</a></li>
+            <li><a href="<?= base_url('Admin/view_item_delivery')?>"><i class="fa fa-circle-o"></i>view item delivery</a></li>
           </ul>
         </li>
 
@@ -93,7 +93,6 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?= base_url('Bp/view_item_request')?>"><i class="fa fa-circle-o"></i>view item request</a></li>
-            <li><a href="<?= base_url('Bp/add_item_request')?>"><i class="fa fa-circle-o"></i> add item request</a></li>
           </ul>
         </li>
          <li class="treeview">
@@ -165,7 +164,7 @@
         </li>
          <li><a href="<?= base_url('Tl/view_report')?>"><i class="fa fa-circle-o text-yellow"></i> <span>report</span></a></li>
          <li><a href="<?= base_url('Tl/view_monthly_report')?>"><i class="fa fa-circle-o text-red"></i> <span>monthly report</span></a></li>
-                 <?php }elseif($level = "4"){ ?> 
+                 <?php }elseif($level = "4"){ ?>
 
          <li class="treeview">
           <a href="#">

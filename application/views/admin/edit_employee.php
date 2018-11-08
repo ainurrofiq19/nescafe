@@ -115,6 +115,13 @@
                     <input type="date" class="form-control" placeholder="Tgl lahir" value="<?=$cetak->TGL_LAHIR ?>" name="tgllahirpeg">
                   </div>
                 </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Photo</label>
+                  <div class="col-sm-10">
+                    <input type="file" name="gambar" size="20" />  
+                  </div>
+                </div>
+
 
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">FOTO</label>
