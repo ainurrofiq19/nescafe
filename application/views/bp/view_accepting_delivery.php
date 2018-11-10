@@ -31,10 +31,11 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>NIP</th>
-                  <th>Name</th>
-                  <th>Employee position</th>
-                  <th>Addres</th>
+                  <th>No Order</th>
+                  <th>Date</th>
+                  <th>Brand Presenter</th>
+                  <th>Status</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -44,11 +45,22 @@
                     <td><?= $data1->TGL_PENGIRIMAN?></td>
                     <td><?= $data1->BP_PENGIRIMAN?></td>
                     <td>
+                        <?php
+                          $t = $data1->STATUS_PENGIRIMAN;
+
+                            if ($t =='1') {
+                              echo "Delivery";
+                            } elseif ($t =='2') {
+                              echo "Be Accepted";
+                            }
+
+                       ?>
+                    <td>
                       <?php if ($data1->STATUS_PENGIRIMAN == "1"){ ?>
-                        <a href="<?= base_url('Bp/detail_item_request'); ?>" class="btn btn-danger"> Detail </a>
-                        <a href="<?= base_url('Bp/accepting_item_delivery2/'.$data1->KODE_PENGIRIMAN);?>" class="btn btn-success"> Terima </a>
+                        <a href="<?= base_url("Bp/detail_item_delivery/$data1->KODE_PENGIRIMAN")?>" class="btn btn-primary">Detail</a>
+                        <a href="<?= base_url('Bp/accepting_item_delivery2/'.$data1->KODE_PENGIRIMAN);?>" class="btn btn-success"> Accept </a>
                       <?php }elseif ($data1->STATUS_PENGIRIMAN == "2") { ?>
-                        <a href="<?= base_url('Bp/detail_item_request2'); ?>" class="btn btn-danger"> Detail </a>
+                         <a href="<?= base_url("Bp/detail_item_delivery/$data1->KODE_PENGIRIMAN")?>" class="btn btn-primary">Detail</a>
                       <?php } ?>
                     </td>
                   </tr>

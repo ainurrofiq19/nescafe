@@ -7,13 +7,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Tables
-        <small>advanced tables</small>
+        Employee List
+        <small>Daftar Pegawai</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data tables</li>
+        <li><a href="#">Employee</a></li>
+        <li class="active">Employee List</li>
       </ol>
     </section>
 
@@ -24,7 +24,7 @@
           
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
+              <h3 class="box-title">Employee List</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -34,8 +34,8 @@
                   <th>NIP</th>
                   <th>Name</th>
                   <th>Employee position</th>
-                  <th>Addres</th>
-                  <th>Phone</th>
+                  <th>Address</th>
+                  <th>Telephone</th>
                   <th>E-mail</th>
                   <th>Gender</th>
                   <th>Action</th>

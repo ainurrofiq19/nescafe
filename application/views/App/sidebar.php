@@ -31,27 +31,14 @@
          <li class="treeview">
           <a href="">
             <i class="fa fa-pie-chart"></i>
-            <span>item</span>
+            <span>Products</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('Admin/view_item')?>"><i class="fa fa-circle-o"></i>view item</a></li>
-            <li><a href="<?= base_url('Admin/add_item')?>"><i class="fa fa-circle-o"></i> add item</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>item request</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?= base_url('Admin/view_item_request')?>"><i class="fa fa-circle-o"></i>view item request</a></li>
-            <li><a href="<?= base_url('Admin/accepting_item_request')?>"><i class="fa fa-circle-o"></i> accepting item request</a></li>
+            <li><a href="<?= base_url('Admin/view_item')?>"><i class="fa fa-circle-o"></i>View Product </a></li>
+            <li><a href="<?= base_url('Admin/add_item')?>"><i class="fa fa-circle-o"></i> Add Product</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -63,51 +50,27 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('Admin/view_employee')?>"><i class="fa fa-circle-o"></i>view Employee</a></li>
+            <li><a href="<?= base_url('Admin/view_employee')?>"><i class="fa fa-circle-o"></i>View Employee</a></li>
             <li><a href="<?= base_url('Admin/add_employee')?>"><i class="fa fa-circle-o"></i>Add Employee</a></li>
           </ul>
         </li>
-         <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>item delivery</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?= base_url('Admin/view_item_delivery')?>"><i class="fa fa-circle-o"></i>view item delivery</a></li>
-          </ul>
+        <li>
+          <a href="<?= base_url('Admin/accepting_item_request')?>"><i class="fa fa-circle-o"></i> Accepting Product Request</a>
         </li>
-
+       
+            <li >
+              <a href="<?= base_url('Admin/view_item_delivery')?>"><i class="fa fa-laptop"></i>Product delivery</a>
+            </li>
+         
         <li><a href="<?= base_url('Admin/view_monthly_report')?>"><i class="fa fa-circle-o text-red"></i> <span>monthly report</span></a></li>
-                <?php }elseif($level == "2"){  ?>
+               
 
-         <li class="treeview">
-          <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>item request</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?= base_url('Bp/view_item_request')?>"><i class="fa fa-circle-o"></i>view item request</a></li>
-          </ul>
-        </li>
-         <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>item delivery</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?= base_url('Bp/view_item_delivery')?>"><i class="fa fa-circle-o"></i>view item delivery</a></li>
-            <li><a href="<?= base_url('Bp/accepting_item_delivery')?>"><i class="fa fa-circle-o"></i>accepting item delivery</a></li>
-          </ul>
-        </li>
+ <?php }elseif($level == "2"){  ?>
+
+            <li><a href="<?= base_url('Bp/view_item_request')?>"><i class="fa fa-pie-chart"></i>Product request</a></li>
+        
+            <li><a href="<?= base_url('Bp/accepting_item_delivery')?>"><i class="fa fa-pie-chart"></i>accepting Product delivery</a></li>
+        
         <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
@@ -124,14 +87,14 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
-            <span>item reture</span>
+            <span>Product reture</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('Bp/view_item_reture')?>"><i class="fa fa-circle-o"></i>view item reture</a></li>
-            <li><a href="<?= base_url('Bp/add_item_reture')?>"><i class="fa fa-circle-o"></i>Add item reture</a></li>
+            <li><a href="<?= base_url('Bp/view_item_reture')?>"><i class="fa fa-circle-o"></i>view Product reture</a></li>
+            <li><a href="<?= base_url('Bp/add_item_reture')?>"><i class="fa fa-circle-o"></i>Add Product reture</a></li>
           </ul>
         </li>
                 <?php }elseif($level == "3"){  ?>

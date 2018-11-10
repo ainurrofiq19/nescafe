@@ -24,7 +24,7 @@
           <!-- Horizontal Form -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Horizontal Form</h3>
+              <h3 class="box-title">Add Product</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -32,25 +32,25 @@
               enctype="multipart/form-data" method="post">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Code Item</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Product Code</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" placeholder="Code Item" name="code">
+                    <input type="text" class="form-control" placeholder="Product Code" name="code">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Nama Item</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Product Name</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" placeholder="Nama" name="item">
+                    <input type="text" class="form-control" placeholder="Product Name" name="item">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Harga</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Price</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" placeholder="Harga" name="harga">
+                    <input type="number" class="form-control" placeholder="Price" name="harga">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">kategori</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Category</label>
                   <div class="col-sm-8" >
                     <select class="form-control" name="kategori">
                       <?php foreach($kat->result_array() as $cat){ ?>
@@ -60,7 +60,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Gambar</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Pictures</label>
                   <div class="col-sm-10">
                     <input type="file" name="gambar" size="20" />  
                   </div>

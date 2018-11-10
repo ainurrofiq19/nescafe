@@ -38,9 +38,9 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Employee Name</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" placeholder="Nama" name="namapeg">
+                    <input type="text" class="form-control" placeholder="Employee Name" name="namapeg">
                   </div>
                 </div>
                 <div class="form-group">
@@ -64,15 +64,15 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Addres</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Address</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" placeholder="alamat" name="alamatpeg">
+                    <input type="text" class="form-control" placeholder="Address" name="alamatpeg">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">E-mail</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" placeholder="email" name="emailpeg">
+                    <input type="text" class="form-control" placeholder="e-mail" name="emailpeg">
                   </div>
                 </div>
               <div class="form-group">
@@ -95,9 +95,9 @@
                   </div>
                 </div>
                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Brithday</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label"> Date of Brit</label>
                   <div class="col-sm-8">
-                    <input type="date" class="form-control" placeholder="Tgl lahir" name="tgllahirpeg">
+                    <input type="date" class="form-control" placeholder="Date of Britr" name="tgllahirpeg">
                   </div>
                 </div>
                 <div class="form-group">
@@ -113,7 +113,7 @@
               <!-- /.box-body -->
               <div class="box-footer">
                 <button type="submit" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-info pull-right">SAVE ITEM</button>
+                <button type="submit" class="btn btn-info pull-right">SAVE</button>
               </div>
               <!-- /.box-footer -->
             </form>

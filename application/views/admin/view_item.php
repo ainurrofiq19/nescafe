@@ -7,13 +7,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Tables
-        <small>advanced tables</small>
+        Products List
+        <small>Daftar produk</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data tables</li>
+        <li><a href="#">Products</a></li>
+        <li class="active">Products List</li>
       </ol>
     </section>
 
@@ -24,16 +24,16 @@
           
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
+              <h3 class="box-title">Products List</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Code item</th>
-                  <th>Name</th>
-                  <th>Price(s)</th>
+                  <th>Product Code </th>
+                  <th>Product Name</th>
+                  <th>Price</th>
                   <th>Photo</th>
                   <th>Category</th>
                   <th>Action</th>

@@ -44,7 +44,7 @@
               <div class="box-body">
 
               <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Nama item</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Product Name</label>
                   <div class="col-sm-10">
                     <select class="form-control" name="item" required="">
                       <option></option>
@@ -55,9 +55,9 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">qty</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Qty</label>
                   <div class="col-sm-10">
-                    <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" required>
+                    <input type="number" class="form-control" placeholder="qty" name="jumlah" required>
                   </div>
                 </div>
 
@@ -91,12 +91,10 @@
       <table id="example1" class="table table-bordered table-striped">
         <thead>
         <tr>
-          <th>KODE BARANG</th>
-          <th>NAMA BARANG</th>
-          <th>JUMLAH</th>
-          <th>HARGA</th>
-          <th>TOTAL</th>
-          <th></th>
+          <th>Product Code</th>
+          <th>Product Name</th>
+          <th>Qty</th>
+          <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -114,17 +112,14 @@
 
               <tr>
                 <form class="form-horizontal" action="<?= base_url('Bp/edit_item_request2')?>" method="post">
-                <td><?= $data1->KODE_PERMINTAAN?></td>
+                <td><?= $data1->NAMA_PERMINTAAN?></td>
                 <td><?= $data1->ITEM?></td>
                 <td>
                   <input type="text" class="form-control" value="<?= $data1->QTY?>" name="jumlah" maxlength="4" size="4">
                   <input type="hidden" class="form-control" value="<?= $data1->ID_PERMINTAAN?>" name="id_item">
                   <input type="hidden" class="form-control" value="<?= $code?>" name="kode_item">
-                </td>
-                <td><?= $data1->HARGA?></td>
-                <td><?php echo $data1->QTY*$data1->HARGA?></td>
-                <td>
-                  <input type="submit" value="Simpan" class="btn btn-primary"></input>
+               <td>
+                  <input type="submit" value="Save" class="btn btn-primary"></input>
                   <a href="<?= base_url("Bp/hapus_item_request/$data1->KODE_PERMINTAAN/$code")?>" class="btn btn-danger small">Hapus</a>
 
                 </td>
@@ -133,25 +128,21 @@
 
           <?php  }else { ?>
             <tr>
-              <td><?= $data1->KODE_PERMINTAAN ?></td>
+              <td><?= $data1->NAMA_PERMINTAAN?></td>
               <td><?= $data1->ITEM?></td>
               <td><?= $data1->QTY?></td>
-              <td><?= $data1->HARGA?></td>
-              <td><?php echo $tot?></td>
               <td><a href="<?= base_url("Bp/update_item_request2/$code/$data1->ID_PERMINTAAN")?>" class="btn btn-primary small">Edit</a>
-                  <a href="<?= base_url("Bp/hapus_item_request2/$data1->KODE_PERMINTAAN/$code")?>" class="btn btn-danger small">Hapus</a></td>
+                  <a href="<?= base_url("Bp/hapus_item_request2/$data1->KODE_PERMINTAAN/$code")?>" class="btn btn-danger small">Delete</a></td>
             </tr>
           <?php } ?>
         <?php } ?>
         </tbody>
         <tfoot>
         <tr>
-          <th>TOTAL Rp. </th>
+          <th>TOTAL </th>
           <th></th>
           <th><?= $jumlahtotal?></th>
-          <th><?= $hargatotal?></th>
-          <th><?= $total?></th>
-          <th></th>
+         <th></th>
         </tr>
 
         </tfoot>

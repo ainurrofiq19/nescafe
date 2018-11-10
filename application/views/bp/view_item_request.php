@@ -42,27 +42,27 @@
               enctype="multipart/form-data" method="post">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Kode Pengiriman</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Delivery Code</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" value="<?= $a.$b?><?=array_sum($i)?>" name="code" readonly>
                   </div>
                 </div>
                 <?php foreach ($jaga->result() as $cetak2){ ?>
                   <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Toko Penerima</label>
+                    <label for="inputPassword3" class="col-sm-2 control-label">Receiver store</label>
                     <div class="col-sm-8">
                       <input type="text" class="form-control" value="<?= $cetak2->ID_TOKO_JAGA ?>" name="toko" readonly>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">BP Penerima</label>
+                    <label for="inputPassword3" class="col-sm-2 control-label">receiver Brand prasenter</label>
                     <div class="col-sm-8">
                       <input type="text" class="form-control" value="<?= $cetak2->NIP_JAGA ?>" name="bp" readonly>
                     </div>
                   </div>
                 <?php } ?>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Tanggal</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Date</label>
                   <div class="col-sm-8">
                     <input type="date" class="form-control" name="tgl" required>
                   </div>
@@ -76,7 +76,7 @@
               <!-- /.box-body -->
               <div class="box-footer">
                 <button type="submit" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-info pull-right">Buat Pengiriman</button>
+                <button type="submit" class="btn btn-info pull-right">Add Delivery</button>
               </div>
               <!-- /.box-footer -->
             </form>
@@ -110,7 +110,17 @@
                   <td><?= $data1->TANGGAL?></td>
                   <td><?= $data1->TOKO?></td>
                   <td><?= $data1->BP?></td>
-                  <td><?= $data1->STATUS?></td>                  
+                  <td>
+                    <?php
+                          $t = $data1->STATUS;
+
+                            if ($t =='1') {
+                              echo "Delivery";
+                            } elseif ($t =='2') {
+                              echo "Be Accepted";
+                            }
+
+                       ?></td>                  
                   <td>
                 
                   

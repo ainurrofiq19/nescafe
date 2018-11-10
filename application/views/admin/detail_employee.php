@@ -6,7 +6,7 @@
     <section class="content">
 
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
 
           <!-- Profile Image -->
           <div class="box box-primary">
@@ -15,66 +15,76 @@
 
               <h3 class="profile-username text-center"><?php echo $bp->NAMA_PEG; ?></h3>
 
-              <p class="text-muted text-center">                      <?php
-$t = $bp->LEVEL;
+              <p class="text-muted text-center">                     
+               <?php
+                $t = $bp->LEVEL;
 
-  if ($t =='1') {
-    echo "Admin";
-  } elseif ($t =='2') {
-    echo "Brand presenter";
-  } elseif ($t =='3') {
-    echo "Team Leader";
-  }else {
-    echo "Supervisor";
-  }
+                  if ($t =='1') {
+                    echo "Admin";
+                  } elseif ($t =='2') {
+                    echo "Brand presenter";
+                  } elseif ($t =='3') {
+                    echo "Team Leader";
+                  }else {
+                    echo "Supervisor";
+                  }
 
 
-?></p>
+                ?></p>
 
-                <form class="form-horizontal">
-                  <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Address</label>
+                <form class="form-horizontal" >
+
+                   <div class="form-group" >
+                    <label for="inputName" class="col-sm-2">NIP</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName" placeholder="Name"value="<?php echo $bp->ALAMAT_PEG; ?>">
+                      <b>: <?php echo $bp->NIP; ?></b>
+                    </div>
+                    </div>
+
+                  <div class="form-group">
+                    <label for="inputName" class="col-sm-2 ">Address</label>
+
+                    <div class="col-sm-10">
+                      <b>: <?php echo $bp->ALAMAT_PEG; ?></b>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                    <label for="inputEmail" class="col-sm-2">Email</label>
 
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail" placeholder="Email"value="<?php echo $bp->EMAIL_PEG; ?>">
+                      <b>: <?php echo $bp->EMAIL_PEG; ?></b>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Telephone</label>
+                    <label for="inputName" class="col-sm-2">Telephone</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName" placeholder="Name"value="<?php echo $bp->TLP_PEG; ?>">
+                     <b>: <?php echo $bp->TLP_PEG; ?></b>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Gender</label>
+                    <label for="inputName" class="col-sm-2 l">Gender</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName" placeholder="Name"value="<?php
-$t = $bp->JENIS_KELAMIN;
+                      <b>: <?php
+                          $t = $bp->JENIS_KELAMIN;
 
-  if ($t =='l') {
-    echo "Male";
-  }else {
-    echo "Female";
-  }
+                            if ($t =='l') {
+                              echo "Male";
+                            }else {
+                              echo "Female";
+                            }
 
 
-?>">
+                          ?></b>
                     </div>
                   </div>
                    <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Birthday</label>
-
+                    <label for="inputName" class="col-sm-2 ">Date of birth</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName" placeholder="Name"value="<?php echo $bp->TGL_LAHIR; ?>">
+                      <b>: <?php echo $bp->TGL_LAHIR; ?></b>
+                
                     </div>
                   </div>
                   <div class="form-group">

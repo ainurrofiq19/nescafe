@@ -281,6 +281,13 @@ class Bp extends CI_Controller {
 
 	}
 
+	public function detail_item_delivery($KODE_PENGIRIMAN) {
+		$data['deliv'] = $this->M_item_delivery->find($KODE_PENGIRIMAN);
+		$data['cetak1'] = $this->M_item_delivery->view_item_delivery2($KODE_PENGIRIMAN);
+		$data['content'] = 'Bp/detail_item_delivery';
+		$this->load->view('template', $data);
+	}
+
 	public function view_item_reture()
 	{
 		$data['cetak1'] = $this->M_item_reture->view_item_reture();

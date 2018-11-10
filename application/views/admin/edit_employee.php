@@ -86,7 +86,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Addres</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Address</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" placeholder="alamat"value="<?=$cetak->ALAMAT_PEG ?>" name="alamatpeg">
                   </div>
@@ -110,28 +110,21 @@
                   </div>
                 </div>
                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Brithday</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Date of Birt</label>
                   <div class="col-sm-8">
                     <input type="date" class="form-control" placeholder="Tgl lahir" value="<?=$cetak->TGL_LAHIR ?>" name="tgllahirpeg">
                   </div>
                 </div>
+
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Photo</label>
-                  <div class="col-sm-10">
-                    <input type="file" name="gambar" size="20" />  
-                  </div>
-                </div>
+                    <div class="col-sm-8">
+                      <img src="<?= base_url()?>asset/user/<?= $cetak->FOTO_PEG ?>" height="142" width="142">
 
+                      <input type="hidden" name="gambarasli" value="<?= $cetak->FOTO_PEG ?>" />
+                      <input type="file" name="gambar" size="20" />
 
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">FOTO</label>
-
-                    <img src="<?= base_url()?>asset/user/<?= $cetak->FOTO_PEG ?>" height="142" width="142">
-
-                    <input type="hidden" name="gambarasli" value="<?= $cetak->FOTO_PEG ?>" />
-                    <input type="file" name="gambar" size="20" />
-
-
+                    </div>
                 </div>
 
  <!--                <div class="form-group">
@@ -147,7 +140,7 @@
               <!-- /.box-body -->
               <div class="box-footer">
                 <button type="submit" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-info pull-right">SAVE ITEM</button>
+                <button type="submit" class="btn btn-info pull-right">SAVE</button>
               </div>
               <!-- /.box-footer -->
             </form>
