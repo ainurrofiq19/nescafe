@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2018 at 05:33 PM
+-- Generation Time: Nov 19, 2018 at 08:28 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -193,7 +193,7 @@ INSERT INTO `tbl_pengiriman` (`ID_PENGIRIMAN`, `KODE_PENGIRIMAN`, `NAMA_PENGIRIM
 (154, 'MSD-SBY-DO-2018-0013', NULL, 0, '2018-11-16', 2, 1020, 2),
 (155, 'MSD-SBY-DO-2018-0012', NULL, 0, '2018-11-16', 2, 22222, 2),
 (156, 'MSD-SBY-DO-2018-0014', NULL, 0, '2018-11-16', 2, 22222, 2),
-(158, 'MSD-SBY-DO-2018-0015', 'machine10', 3, '2018-11-16', 2, 22222, 2),
+(158, 'MSD-SBY-DO-2018-0015', 'machine10', 3, '2018-11-16', 2, 22222, 1),
 (159, 'MSD-SBY-DO-2018-0016', 'cap4', 4, '2018-11-19', 2, 22222, 2),
 (160, 'MSD-SBY-DO-2018-0017', 'machine8', 5, '2018-11-19', 2, 22222, 2),
 (161, 'MSD-SBY-DO-2018-0018', NULL, 0, '2018-11-19', 2, 22222, 2),
@@ -314,10 +314,19 @@ CREATE TABLE `tbl_reture` (
 --
 
 INSERT INTO `tbl_reture` (`ID_RETURE`, `KODE_RETURE`, `NAMA_RETURE`, `JUMLAH_RETURE`, `TGL_RETURE`, `TOKO_RETURE`, `BP_RETURE`, `STATUS_RETURE`) VALUES
-(1, 'MSD-SBY-RT-2018-1', 'cap2', 2, '2018-11-16', 2, 22222, 1),
-(8, 'MSD-SBY-RT-2018-2', NULL, 0, '2018-11-16', 2, 22222, 1),
-(46, 'MSD-SBY-RT-2018-3', NULL, 0, '2018-11-16', 2, 22222, 1),
-(47, 'MSD-SBY-RT-2018-3', 'cap1', 2, '2018-11-16', 2, 22222, 1);
+(8, 'NDG-SBY-RET-2018-0002', 'machine9', 1, '2018-11-16', 2, 22222, 1),
+(46, 'NDG-SBY-RET-2018-0003', NULL, 0, '2018-11-16', 2, 22222, 1),
+(47, 'NDG-SBY-RET-2018-0003', 'cap1', 2, '2018-11-16', 2, 22222, 1),
+(48, 'NDG-SBY-RET-2018-0004', NULL, 0, '2018-11-19', 2, 22222, 2),
+(49, 'NDG-SBY-RET-2018-0004', 'machine8', 7, '2018-11-19', 2, 22222, 2),
+(50, 'NDG-SBY-RET-2018-0005', NULL, 0, '2018-11-19', 2, 22222, 2),
+(51, 'NDG-SBY-RET-2018-0005', 'cap1', 2, '2018-11-19', 2, 22222, 2),
+(52, 'NDG-SBY-RET-2018-0006', 'machine9', 2, '2018-11-19', 2, 22222, 1),
+(54, 'NDG-SBY-RET-2018-0001', 'machine1', 2, '2018-11-19', 2, 22222, 1),
+(55, 'NDG-SBY-RET-2018-0001', 'cap1', 2, '2018-11-19', 2, 22222, 1),
+(56, 'NDG-SBY-RET-2018-0001', 'machine10', 1, '2018-11-19', 2, 22222, 1),
+(57, 'NDG-SBY-RET-2018-0010', NULL, 0, '2018-11-19', 2, 22222, 1),
+(58, 'NDG-SBY-RET-2018-0010', 'machine9', 1, '2018-11-19', 2, 22222, 1);
 
 -- --------------------------------------------------------
 
@@ -337,11 +346,11 @@ CREATE TABLE `tbl_stok` (
 --
 
 INSERT INTO `tbl_stok` (`ID_STOK`, `JUMLAH`, `ID_BARANG`, `ID_STORE`) VALUES
-(2, 3, 'cap1', 2),
-(120, 6, 'machine8', 2),
+(2, 7, 'cap1', 2),
+(120, 1, 'machine8', 2),
 (121, 3, 'machine12', 2),
-(122, 8, 'machine1', 2),
-(123, 5, 'machine9', 2),
+(122, 5, 'machine1', 2),
+(123, 8, 'machine9', 2),
 (124, 2, 'machine6', 2),
 (125, 3, 'machine10', 2),
 (126, 4, 'cap4', 2);
@@ -494,7 +503,7 @@ ALTER TABLE `tbl_permintaan`
 -- AUTO_INCREMENT for table `tbl_reture`
 --
 ALTER TABLE `tbl_reture`
-  MODIFY `ID_RETURE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `ID_RETURE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 --
 -- AUTO_INCREMENT for table `tbl_stok`
 --

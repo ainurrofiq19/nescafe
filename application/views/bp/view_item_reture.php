@@ -3,9 +3,10 @@
   foreach ($lastcode->result_array() as $code) {
     $printcode = $code['KODE_RETURE'];
   }
-  $a = 'MSD-SBY-RT-';
+  $a = 'NDG-SBY-RET-';
   $b = date('Y-');
-  $x = substr($printcode,16);
+  $c = '00';
+  $x = substr($printcode,19);
   $i = array($x,1)
 ?>
 
@@ -44,7 +45,7 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Delivery Code</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" value="<?= $a.$b?><?=array_sum($i)?>" name="code" readonly>
+                    <input type="text" class="form-control" value="<?= $a.$b.$c?><?=array_sum($i)?>" name="code" readonly>
                   </div>
                 </div>
                 <?php foreach ($jaga->result() as $cetak2){ ?>

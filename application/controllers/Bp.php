@@ -226,8 +226,6 @@ class Bp extends CI_Controller {
 			$data1 = $data['ID_TOKO_JAGA'];
 
 		}
-
-		
 	
 			$kode = $kode_delivery;
 			$set = $this->db->query("SELECT * FROM tbl_pengiriman WHERE KODE_PENGIRIMAN = '$kode_delivery' AND NAMA_PENGIRIMAN IS NOT NULL ");
@@ -551,6 +549,12 @@ public function view_stock()
 	{
 		$this->db->delete('tbl_reture', array('ID_RETURE' => $id));
 		redirect('Bp/update_item_reture/'.$kode_id);
+	}
+	public function detail_item_reture($KODE_RETURE) {
+		$data['deliv'] = $this->M_item_reture->find($KODE_RETURE);
+		$data['cetak1'] = $this->M_item_reture->view_item_reture2($KODE_RETURE);
+		$data['content'] = 'Bp/detail_item_reture';
+		$this->load->view('template', $data);
 	}
 
 	public function view_report()

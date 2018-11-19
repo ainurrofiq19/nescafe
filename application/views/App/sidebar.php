@@ -87,19 +87,9 @@
             <li><a href="<?= base_url('Bp/add_report')?>"><i class="fa fa-circle-o"></i>Add report</a></li>
           </ul>
         </li>
-          <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>Product reture</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?= base_url('Bp/view_item_reture')?>"><i class="fa fa-circle-o"></i>view Product reture</a></li>
-            <li><a href="<?= base_url('Bp/add_item_reture')?>"><i class="fa fa-circle-o"></i>Add Product reture</a></li>
-          </ul>
-        </li>
+         
+          <li><a href="<?= base_url('Bp/view_item_reture')?>"><i class="fa fa-circle-o"></i> Product reture</a></li>
+          
          <li>
           <a href="<?= base_url('Bp/view_stock')?>"><i class="fa fa-circle-o"></i> View Stock</a>
         </li>
@@ -136,19 +126,8 @@
          <li><a href="<?= base_url('Tl/view_monthly_report')?>"><i class="fa fa-circle-o text-red"></i> <span>monthly report</span></a></li>
                  <?php }elseif($level = "4"){ ?>
 
-         <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>item reture</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?= base_url('Spv/view_item_reture')?>"><i class="fa fa-circle-o"></i>view item reture</a></li>
             <li><a href="<?= base_url('Spv/accepting_item_reture')?>"><i class="fa fa-circle-o"></i>accepting item reture</a></li>
-          </ul>
-        </li>
+          
         <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
