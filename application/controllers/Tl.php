@@ -37,10 +37,17 @@ class Tl extends CI_Controller {
 				'TLP_PEG'			=> $this->input->post('tlppeg'),
 				'JENIS_KELAMIN'		=> $this->input->post('kelaminpeg'),
 				'TGL_LAHIR'			=> $now,
+				'TGL_MASUK'			=> $this->input->post('tglmasuk'),
 				'FOTO_PEG'			=> $file.'.jpg',
 				'LEVEL'				=> '2',
 				'AKTIF'				=> 'y'
 			);
+			$data2 = array (
+				'NIP_JAGA'				=> $this->input->post('nip'),
+				'ID_TOKO_jaga'			=> $this->input->post('toko')
+				
+			);
+			
 			
 			$config['upload_path']          = './asset/user/';
 			$config['allowed_types']        = 'jpg';
@@ -52,10 +59,11 @@ class Tl extends CI_Controller {
 			$this->upload->do_upload('gambar');
 
 			$this->db->insert('tbl_pegawai', $data);
+			$this->db->insert('tbl_penjaga', $data2);
 			redirect('tl/view_brand_presenter');
 		}
 
-		$data['kat'] = $this->db->query("SELECT * FROM tbl_penjaga");
+		$data['kat'] = $this->db->query("SELECT * FROM tbl_toko");
 		$data['content'] = 'Tl/add_brand_presenter';
 		$this->load->view('template', $data);
 	}
@@ -100,9 +108,11 @@ class Tl extends CI_Controller {
 				'TLP_PEG'			=> $this->input->post('tlppeg'),
 				'JENIS_KELAMIN'		=> $this->input->post('kelaminpeg'),
 				'TGL_LAHIR'			=> $this->input->post('tgllahirpeg'),
+				'TGL_MASUK'			=> $this->input->post('tglmasuk'),
 				'LEVEL'				=> '2',
 				'AKTIF'				=> 'y'
 			);
+			
 			$this->db->update('tbl_pegawai', $data, "NIP = '$kode_bp'");
 		}else {
 			rename('asset/temp/'.$file.'.jpg', 'asset/user/'.$kode_gambar);
@@ -116,14 +126,13 @@ class Tl extends CI_Controller {
 				'TLP_PEG'			=> $this->input->post('tlppeg'),
 				'JENIS_KELAMIN'		=> $this->input->post('kelaminpeg'),
 				'TGL_LAHIR'			=>$this->input->post('tgllahirpeg'),
+				'TGL_MASUK'			=> $this->input->post('tglmasuk'),
 				'FOTO_PEG'			=> $file.'.jpg',
 				'LEVEL'				=> '2',
 				'AKTIF'				=> 'y'
 			);
-
-
 			$this->db->update('tbl_pegawai', $data, "NIP = '$kode_bp'");
-			redirect('tl/edit_brand_presenter/'.$file);
+			redirect('tl/view_brand_presenter/'.$file);
 		}
 
 		redirect('tl/view_brand_presenter');
@@ -132,6 +141,23 @@ class Tl extends CI_Controller {
 
 	$data['content'] = 'Tl/edit_brand_presenter';
 	$data['bp'] = $this->db->query("SELECT * FROM tbl_pegawai WHERE NIP = '$kode_bp'");
+	$data['tok'] = $this->db->query("SELECT tbl_pegawai.NIP AS NIP, 
+ 		tbl_pegawai.NAMA_PEG AS NAMA_PEG, 
+ 		tbl_pegawai.ALAMAT_PEG AS ALAMAT_PEG,
+ 		tbl_pegawai.TLP_PEG AS TLP_PEG,
+ 		tbl_pegawai.EMAIL_PEG AS EMAIL_PEG,
+		tbl_pegawai.JENIS_KELAMIN AS JENIS_KELAMIN,
+		tbl_pegawai.TGL_LAHIR AS TGL_LAHIR,
+		tbl_toko.NAMA_TOKO AS NAMA_TOKO,
+		tbl_pegawai.TGL_MASUK AS TGL_MASUK,
+		tbl_pegawai.FOTO_PEG AS FOTO_PEG,
+		tbl_pegawai.LEVEL AS LEVEL
+
+ 		FROM tbl_pegawai,tbl_penjaga,tbl_toko
+        WHERE NIP = '$kode_bp'
+        AND tbl_pegawai.NIP=tbl_penjaga.NIP_JAGA
+        AND tbl_penjaga.ID_TOKO_JAGA=tbl_toko.ID_TOKO
+        AND  LEVEL = 2 and tbl_pegawai.AKTIF='y'");
 	$this->load->view('template', $data);
 }
 
@@ -144,9 +170,25 @@ class Tl extends CI_Controller {
     }
 
 	public function detail_brand_presenter($NIP) {
+		$data['tok'] = $this->db->query("SELECT tbl_pegawai.NIP AS NIP, 
+ 		tbl_pegawai.NAMA_PEG AS NAMA_PEG, 
+ 		tbl_pegawai.ALAMAT_PEG AS ALAMAT_PEG,
+ 		tbl_pegawai.TLP_PEG AS TLP_PEG,
+ 		tbl_pegawai.EMAIL_PEG AS EMAIL_PEG,
+		tbl_pegawai.JENIS_KELAMIN AS JENIS_KELAMIN,
+		tbl_pegawai.TGL_LAHIR AS TGL_LAHIR,
+		tbl_toko.NAMA_TOKO AS NAMA_TOKO,
+		tbl_pegawai.TGL_MASUK AS TGL_MASUK,
+		tbl_pegawai.FOTO_PEG AS FOTO_PEG,
+		tbl_pegawai.LEVEL AS LEVEL
+
+ 		FROM tbl_pegawai,tbl_penjaga,tbl_toko
+        WHERE NIP = '$NIP'
+        AND tbl_pegawai.NIP=tbl_penjaga.NIP_JAGA
+        AND tbl_penjaga.ID_TOKO_JAGA=tbl_toko.ID_TOKO
+        AND  LEVEL = 2 and tbl_pegawai.AKTIF='y'");
 
 		$data['bp'] = $this->M_brand_presenter->find($NIP);
-		// $data['cetak1'] = $this->M_brand_presenter->detail_brand_presenter();
 		$data['content'] = 'Tl/detail_brand_presenter';
 		$this->load->view('template', $data);
 	}
@@ -216,6 +258,31 @@ class Tl extends CI_Controller {
        		 redirect('tl/view_store');
         }
     }
+
+public function view_bp_store()
+	{
+		$data['cetak1'] = $this->M_store->view_store_jaga();
+		$data['content'] = 'tl/view_bp_store';
+		$this->load->view('template',$data);
+	}
+
+	public function form_edit_jaga($kode_jaga){
+		if ($this->input->server('REQUEST_METHOD') == 'POST') {
+			$kode_jaga			= $this->input->post('kode_jaga');
+			$data = array (
+
+					'NIP_JAGA'			=> $this->input->post('nip'),
+					'ID_TOKO_JAGA'		=> $this->input->post('toko')
+			);
+			$this->db->update('tbl_penjaga', $data, "AI_JAGA = '$kode_jaga'");
+			redirect('tl/view_bp_store');
+		}
+		$data['cetak1'] = $this->db->query("SELECT * FROM tbl_toko");
+		$data['cetak2'] = $this->db->query("SELECT * FROM tbl_pegawai WHERE LEVEL=2");
+		$data['cetak3'] = $this->M_store->view_store_jaga_detail($kode_jaga);
+		$data['content'] = 'tl/edit_bp_store';
+		$this->load->view('template',$data);
+	}
 
 	public function view_report()
 	{

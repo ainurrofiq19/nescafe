@@ -4,13 +4,23 @@ class M_employee extends CI_Model{
 
 public function view_employee()
  {
- 	$sql = "SELECT NIP,NAMA_PEG,LEVEL,ALAMAT_PEG,TLP_PEG,EMAIL_PEG,JENIS_KELAMIN,FOTO_PEG,TGL_LAHIR,AKTIF, 
- 	CASE 
- 	WHEN LEVEL = '1' THEN 'Admin' 
- 	WHEN LEVEL = '2' THEN 'Brand presenter' 
- 	WHEN LEVEL = '3' THEN 'Team Leader' ELSE 'Supervisor' 
- 	END 
- 	FROM tbl_pegawai WHERE AKTIF='y'";
+ 	$sql = "SELECT tbl_pegawai.NIP AS NIP, 
+ 		tbl_pegawai.NAMA_PEG AS NAMA_PEG, 
+ 		tbl_pegawai.ALAMAT_PEG AS ALAMAT_PEG,
+ 		tbl_pegawai.TLP_PEG AS TLP_PEG,
+ 		tbl_pegawai.EMAIL_PEG AS EMAIL_PEG,
+		tbl_pegawai.JENIS_KELAMIN AS JENIS_KELAMIN,
+		tbl_pegawai.TGL_LAHIR AS TGL_LAHIR,
+		tbl_toko.NAMA_TOKO AS NAMA_TOKO,
+		tbl_pegawai.TGL_MASUK AS TGL_MASUK,
+		tbl_pegawai.FOTO_PEG AS FOTO_PEG,
+		tbl_pegawai.LEVEL AS LEVEL
+	
+
+ 		FROM tbl_pegawai,tbl_penjaga,tbl_toko
+        WHERE tbl_pegawai.NIP=tbl_penjaga.NIP_JAGA
+        AND tbl_penjaga.ID_TOKO_JAGA=tbl_toko.ID_TOKO
+        AND tbl_pegawai.AKTIF='y'";
 
     $result = $this->db->query($sql);
     return $result->result();

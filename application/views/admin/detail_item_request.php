@@ -108,8 +108,10 @@
       </table>
     </div>
 <br />
+
 <div class="right">
    <button type="button" class="btn red" onclick="window.history.go(-1)">Kembali</button>
+  
 </div>
 <br/>
 </div>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2018 at 02:58 PM
+-- Generation Time: Nov 19, 2018 at 05:33 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -40,6 +40,27 @@ CREATE TABLE `tbl_berita` (
 INSERT INTO `tbl_berita` (`ID_BERITA`, `JUDUL_BERITA`, `ISI_BERITA`, `FOTO_BERITA`) VALUES
 (3, 'aa', '<p>sddffsf</p>', 'aa.jpg'),
 (4, 'event', '<p>promo yang</p>\r\n<p>terbai</p>\r\n<p>naewlggkgd</p>\r\n<p>&nbsp;</p>', 'event.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_detail_permintaan`
+--
+
+CREATE TABLE `tbl_detail_permintaan` (
+  `ID_PERMINTAAN` int(11) NOT NULL,
+  `KODE_PERMINTAAN` varchar(255) NOT NULL,
+  `NAMA_PERMINTAAN` varchar(255) NOT NULL,
+  `QTY` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_detail_permintaan`
+--
+
+INSERT INTO `tbl_detail_permintaan` (`ID_PERMINTAAN`, `KODE_PERMINTAAN`, `NAMA_PERMINTAAN`, `QTY`) VALUES
+(1, 'MSD-SBY-DO-2018-1', 'cap1', 5),
+(1, 'MSD-SBY-DO-2018-1', 'cap2', 4);
 
 -- --------------------------------------------------------
 
@@ -111,6 +132,7 @@ CREATE TABLE `tbl_pegawai` (
   `ALAMAT_PEG` varchar(200) DEFAULT NULL,
   `EMAIL_PEG` varchar(50) DEFAULT NULL,
   `TLP_PEG` varchar(20) DEFAULT NULL,
+  `TGL_MASUK` date NOT NULL,
   `JENIS_KELAMIN` varchar(1) DEFAULT NULL,
   `TGL_LAHIR` date DEFAULT NULL,
   `FOTO_PEG` varchar(255) DEFAULT NULL,
@@ -124,17 +146,20 @@ CREATE TABLE `tbl_pegawai` (
 -- Dumping data for table `tbl_pegawai`
 --
 
-INSERT INTO `tbl_pegawai` (`NIP`, `NAMA_PEG`, `PASSWORD`, `ALAMAT_PEG`, `EMAIL_PEG`, `TLP_PEG`, `JENIS_KELAMIN`, `TGL_LAHIR`, `FOTO_PEG`, `STATUS_LOGIN`, `LEVEL`, `AKTIF`, `COOKIE`) VALUES
-(1020, 'coba', '1234', 'aa', 'wla@g.com', '88', 'l', '2018-10-28', '1020.jpg', '', '2', 'y', ''),
-(7777, 'wulanmm', '1234', 'wulaa', 'wla@g.com', '0888', 'p', '2018-10-04', '7777.jpg', '', '2', 'n', ''),
-(11111, 'RIRIN WULAN', '81dc9bdb52d04dc20036dbd8313ed055', 'AAAAAAAAAAAAAA', 'BBBB@GMAIL.COM', '08222222222', 'p', '2018-08-01', '11111.jpg', '', '1', 'y', ''),
-(22222, 'rofiq', '81dc9bdb52d04dc20036dbd8313ed055', 'dddddd', 'aaaa@gmail.com', '028384744', 'l', '2018-10-23', '22222.jpg', '1', '2', 'y', 'ac'),
-(33322, 'ggg', '1234', 'ssss', 'dss@ss', '55', 'l', '2018-10-23', '33322.jpg', '', '2', 'y', ''),
-(33333, 'pujo', '81dc9bdb52d04dc20036dbd8313ed055', 'cccccccc', 'cccc@gmail.com', '095887566', 'l', '2018-08-01', '33333.jpg', '1', '3', 'y', 'qeNcasovS4XKCHtZRyd5nffGngPIlEFsWk73ZjoMLmhTSQBH9pJ6zu0L2h5iwatP'),
-(44444, 'rio', '81dc9bdb52d04dc20036dbd8313ed055', 'dddddd', 'dddd@gmail.com', '86775654', 'l', '2018-08-08', '44444.jpg', '2', '4', 'y', ''),
-(55555, 'adi', '81dc9bdb52d04dc20036dbd8313ed055', 'aaaaaaaaa', 'aaaa@gmail.com', '028384744', 'l', '2018-08-08', '55555.jpg', '1', '2', 'y', 'ac'),
-(88888, 'djodi', '1234', 'aa', 'a2GKK.COM', '88', 'l', '2018-10-17', '88888.jpg', '', '2', 'y', ''),
-(99999, 'dika', '1234', 'jalan jalan', 'aaa@g.com', '0000', 'l', '2018-10-23', '99999.jpg', '', '2', 'y', '');
+INSERT INTO `tbl_pegawai` (`NIP`, `NAMA_PEG`, `PASSWORD`, `ALAMAT_PEG`, `EMAIL_PEG`, `TLP_PEG`, `TGL_MASUK`, `JENIS_KELAMIN`, `TGL_LAHIR`, `FOTO_PEG`, `STATUS_LOGIN`, `LEVEL`, `AKTIF`, `COOKIE`) VALUES
+(1020, 'dian', '81dc9bdb52d04dc20036dbd8313ed055', 'jl diannnnn', 'dian@g.com', '877777777', '2018-11-07', 'p', '2018-10-28', '1020.jpg', '', '2', 'y', ''),
+(7777, 'wulanmm', '81dc9bdb52d04dc20036dbd8313ed055', 'wulaa', 'wla@g.com', '0888', '0000-00-00', 'p', '2018-10-04', '7777.jpg', '', '2', 'n', ''),
+(11111, 'RIRIN WULAN', '81dc9bdb52d04dc20036dbd8313ed055', 'AAAAAAAAAAAAAA', 'BBBB@GMAIL.COM', '08222222222', '0000-00-00', 'p', '2018-08-01', '11111.jpg', '', '1', 'y', ''),
+(22222, 'rofiq', '81dc9bdb52d04dc20036dbd8313ed055', 'dddddd', 'aaaa@gmail.com', '028384744', '0000-00-00', 'l', '2018-10-23', '22222.jpg', '1', '2', 'y', 'ac'),
+(33322, 'ggg', '81dc9bdb52d04dc20036dbd8313ed055', 'ssss', 'dss@ss', '55', '0000-00-00', 'l', '2018-10-23', '33322.jpg', '', '2', 'y', ''),
+(33333, 'pujo', '81dc9bdb52d04dc20036dbd8313ed055', 'cccccccc', 'cccc@gmail.com', '095887566', '0000-00-00', 'l', '2018-08-01', '33333.jpg', '1', '3', 'y', 'qeNcasovS4XKCHtZRyd5nffGngPIlEFsWk73ZjoMLmhTSQBH9pJ6zu0L2h5iwatP'),
+(44444, 'rio', '81dc9bdb52d04dc20036dbd8313ed055', 'dddddd', 'dddd@gmail.com', '86775654', '0000-00-00', 'l', '2018-08-08', '44444.jpg', '2', '4', 'y', ''),
+(55555, 'adi', '81dc9bdb52d04dc20036dbd8313ed055', 'aaaaaaaaa', 'aaaa@gmail.com', '028384744', '0000-00-00', 'l', '2018-08-08', '55555.jpg', '1', '2', 'y', 'ac'),
+(88888, 'djodi', '81dc9bdb52d04dc20036dbd8313ed055', 'aa', 'a2GKK.COM', '88', '0000-00-00', 'l', '2018-10-17', '88888.jpg', '', '2', 'y', ''),
+(99999, 'dika', '81dc9bdb52d04dc20036dbd8313ed055', 'jalan jalan', 'aaa@g.com', '0000', '0000-00-00', 'l', '2018-10-23', '99999.jpg', '', '2', 'y', ''),
+(445566, 'asdfghj', '81dc9bdb52d04dc20036dbd8313ed055', 'dddddd', 'aaaa@gmail.com', '028384744', '0000-00-00', 'l', '2018-11-12', '445566.jpg', '', '3', 'y', ''),
+(12222222, 'h', '81dc9bdb52d04dc20036dbd8313ed055', 'jl diannnnn', 'wla@g.com', '0888', '2018-11-28', 'l', '2018-11-12', '12222222.jpg', '', '2', 'y', ''),
+(123456789, 'rafif', '81dc9bdb52d04dc20036dbd8313ed055', 'aa', 'wla@g.com', '88', '2018-11-09', 'l', '2018-11-12', '123456789.jpg', '', '2', 'y', '');
 
 -- --------------------------------------------------------
 
@@ -158,18 +183,21 @@ CREATE TABLE `tbl_pengiriman` (
 --
 
 INSERT INTO `tbl_pengiriman` (`ID_PENGIRIMAN`, `KODE_PENGIRIMAN`, `NAMA_PENGIRIMAN`, `JUMLAH_PENGIRIMAN`, `TGL_PENGIRIMAN`, `TOKO_PENGIRIMAN`, `BP_PENGIRIMAN`, `STATUS_PENGIRIMAN`) VALUES
-(59, 'MSD-SBY-DO-2018-1', NULL, 0, '2018-11-09', 7, 1020, 1),
-(90, 'MSD-SBY-DO-2018-1', 'cap1', 2, '2018-11-08', 7, 1020, 1),
-(91, 'MSD-SBY-DO-2018-1', 'cap4', 1, '2018-11-08', 7, 1020, 1),
-(92, 'MSD-SBY-DO-2018-1', 'machine10', 3, '2018-11-08', 7, 1020, 1),
-(93, 'MSD-SBY-DO-2018-2', NULL, 0, '2018-11-08', 2, 22222, 2),
-(94, 'MSD-SBY-DO-2018-2', 'cap1', 2, '2018-11-08', 2, 22222, 2),
-(95, 'MSD-SBY-DO-2018-2', 'machine8', 1, '2018-11-08', 2, 22222, 2),
-(96, 'MSD-SBY-DO-2018-2', 'machine12', 3, '2018-11-08', 2, 22222, 2),
-(97, 'MSD-SBY-DO-2018-2', 'machine1', 4, '2018-11-08', 2, 22222, 2),
-(98, 'MSD-SBY-DO-2018-3', NULL, 0, '2018-11-08', 2, 22222, 1),
-(99, 'MSD-SBY-DO-2018-3', 'machine9', 5, '2018-11-08', 2, 22222, 1),
-(100, 'MSD-SBY-DO-2018-3', 'machine6', 2, '2018-11-08', 2, 22222, 1);
+(59, 'MSD-SBY-DO-2018-0001', 'machine12', 3, '2018-11-09', 7, 1020, 1),
+(90, 'MSD-SBY-DO-2018-0003', 'cap1', 2, '2018-11-08', 7, 1020, 1),
+(91, 'MSD-SBY-DO-2018-0004', 'cap4', 1, '2018-11-08', 7, 1020, 1),
+(92, 'MSD-SBY-DO-2018-0002', 'machine10', 3, '2018-11-08', 7, 1020, 1),
+(151, 'MSD-SBY-DO-2018-0005', NULL, 0, '2018-11-16', 2, 88888, 2),
+(152, 'MSD-SBY-DO-2018-0010', NULL, 0, '2018-11-16', 2, 22222, 2),
+(153, 'MSD-SBY-DO-2018-0011', NULL, 0, '2018-11-16', 2, 22222, 2),
+(154, 'MSD-SBY-DO-2018-0013', NULL, 0, '2018-11-16', 2, 1020, 2),
+(155, 'MSD-SBY-DO-2018-0012', NULL, 0, '2018-11-16', 2, 22222, 2),
+(156, 'MSD-SBY-DO-2018-0014', NULL, 0, '2018-11-16', 2, 22222, 2),
+(158, 'MSD-SBY-DO-2018-0015', 'machine10', 3, '2018-11-16', 2, 22222, 2),
+(159, 'MSD-SBY-DO-2018-0016', 'cap4', 4, '2018-11-19', 2, 22222, 2),
+(160, 'MSD-SBY-DO-2018-0017', 'machine8', 5, '2018-11-19', 2, 22222, 2),
+(161, 'MSD-SBY-DO-2018-0018', NULL, 0, '2018-11-19', 2, 22222, 2),
+(162, 'MSD-SBY-DO-2018-0018', 'machine1', 4, '2018-11-19', 2, 22222, 2);
 
 -- --------------------------------------------------------
 
@@ -188,7 +216,19 @@ CREATE TABLE `tbl_penjaga` (
 --
 
 INSERT INTO `tbl_penjaga` (`AI_JAGA`, `NIP_JAGA`, `ID_TOKO_JAGA`) VALUES
-(1, 22222, 2);
+(1, 22222, 2),
+(2, 55555, 7),
+(3, 1020, 7),
+(4, 7777, 2),
+(5, 88888, 7),
+(6, 7777, 8),
+(7, 123456789, 1),
+(8, 11111, 1),
+(9, 33322, 1),
+(11, 12222222, 1),
+(13, 445566, 1),
+(14, 44444, 1),
+(15, 33333, 1);
 
 -- --------------------------------------------------------
 
@@ -229,19 +269,28 @@ CREATE TABLE `tbl_permintaan` (
 --
 
 INSERT INTO `tbl_permintaan` (`ID_PERMINTAAN`, `KODE_PERMINTAAN`, `NAMA_PERMINTAAN`, `JUMLAH_PERMINTAAN`, `TGL_PERMINTAAN`, `TOKO_PERMINTAAN`, `BP_PERMINTAAN`, `STATUS_PERMINTAAN`) VALUES
-(1, 'MSD-SBY-RI-2018-1', 'kop', 3, '2018-11-07', 2, 22222, 2),
-(34, 'MSD-SBY-RI-2018-3', 'mca', 4, '2018-10-31', 2, 22222, 1),
-(35, 'MSD-SBY-RI-2018-2', 'mca', 3, '2018-11-06', 2, 22222, 1),
-(36, 'MSD-SBY-RI-2018-4', NULL, 0, '2018-11-08', 2, 22222, 1),
-(37, 'MSD-SBY-RI-2018-4', 'mca', 1, '2018-11-08', 2, 22222, 1),
-(38, 'MSD-SBY-RI-2018-5', NULL, 0, '2018-11-08', 2, 22222, 1),
-(39, 'MSD-SBY-RI-2018-6', NULL, 0, '2018-11-01', 2, 22222, 1),
-(40, 'MSD-SBY-RI-2018-6', 'kop', 3, '2018-11-08', 2, 22222, 1),
-(41, 'MSD-SBY-RI-2018-2', 'cap2', 2, '2018-11-10', 2, 22222, 1),
-(42, 'MSD-SBY-RI-2018-2', 'cap4', 4, '2018-11-10', 2, 22222, 1),
-(43, 'MSD-SBY-RI-2018-7', NULL, 0, '2018-12-10', 2, 22222, 1),
-(44, 'MSD-SBY-RI-2018-7', 'cap2', 2, '2018-11-10', 2, 22222, 1),
-(45, 'MSD-SBY-RI-2018-7', 'cap3', 4, '2018-11-10', 2, 22222, 1);
+(1, 'NDG-SBY-REQ-2018-0001', 'machine1', 3, '2018-11-07', 2, 22222, 2),
+(48, 'NDG-SBY-REQ-2018-0002', NULL, 0, '2018-11-14', 2, 22222, 2),
+(49, 'NDG-SBY-REQ-2018-0002', 'cap4', 1, '2018-11-14', 2, 22222, 2),
+(50, 'NDG-SBY-REQ-2018-0002', 'machine1', 4, '2018-11-14', 2, 22222, 2),
+(51, 'NDG-SBY-REQ-2018-0003', NULL, 0, '2018-11-15', 2, 22222, 2),
+(52, 'NDG-SBY-REQ-2018-0003', 'cap2', 5, '2018-11-14', 2, 22222, 2),
+(53, 'NDG-SBY-REQ-2018-0003', 'machine1', 3, '2018-11-14', 2, 22222, 2),
+(54, 'NDG-SBY-REQ-2018-0004', NULL, 0, '2018-11-15', 2, 22222, 2),
+(55, 'NDG-SBY-REQ-2018-0004', 'cap2', 5, '2018-11-14', 2, 22222, 2),
+(56, 'NDG-SBY-REQ-2018-0004', 'machine10', 5, '2018-11-14', 2, 22222, 2),
+(57, 'NDG-SBY-REQ-2018-0005', NULL, 0, '2018-11-15', 2, 22222, 2),
+(58, 'NDG-SBY-REQ-2018-0005', 'machine10', 3, '2018-11-14', 2, 22222, 2),
+(59, 'NDG-SBY-REQ-2018-0009', 'machine6', 6, '2018-11-14', 2, 22222, 2),
+(63, 'NDG-SBY-REQ-2018-0010', NULL, 0, '2018-11-15', 2, 22222, 2),
+(64, 'NDG-SBY-REQ-2018-0010', NULL, 0, '2018-11-14', 2, 22222, 2),
+(65, 'NDG-SBY-REQ-2018-0011', NULL, 0, '2018-11-13', 2, 22222, 2),
+(66, 'NDG-SBY-REQ-2018-0011', 'cap4', 1, '2018-11-16', 2, 22222, 1),
+(68, 'NDG-SBY-REQ-2018-0012', NULL, 0, '2018-11-16', 2, 22222, 2),
+(69, 'NDG-SBY-REQ-2018-0013', NULL, 0, '2018-11-16', 2, 22222, 2),
+(70, 'NDG-SBY-REQ-2018-0013', 'cap4', 4, '2018-11-16', 2, 22222, 2),
+(71, 'NDG-SBY-REQ-2018-0014', NULL, 0, '2018-11-19', 2, 22222, 2),
+(72, 'NDG-SBY-REQ-2018-0014', 'machine8', 5, '2018-11-19', 2, 22222, 2);
 
 -- --------------------------------------------------------
 
@@ -251,13 +300,24 @@ INSERT INTO `tbl_permintaan` (`ID_PERMINTAAN`, `KODE_PERMINTAAN`, `NAMA_PERMINTA
 
 CREATE TABLE `tbl_reture` (
   `ID_RETURE` int(11) NOT NULL,
-  `NAMA_RETURE` varchar(50) NOT NULL,
+  `KODE_RETURE` varchar(255) NOT NULL,
+  `NAMA_RETURE` varchar(50) DEFAULT NULL,
   `JUMLAH_RETURE` int(11) NOT NULL,
   `TGL_RETURE` date NOT NULL,
   `TOKO_RETURE` int(11) NOT NULL,
   `BP_RETURE` int(11) NOT NULL,
   `STATUS_RETURE` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_reture`
+--
+
+INSERT INTO `tbl_reture` (`ID_RETURE`, `KODE_RETURE`, `NAMA_RETURE`, `JUMLAH_RETURE`, `TGL_RETURE`, `TOKO_RETURE`, `BP_RETURE`, `STATUS_RETURE`) VALUES
+(1, 'MSD-SBY-RT-2018-1', 'cap2', 2, '2018-11-16', 2, 22222, 1),
+(8, 'MSD-SBY-RT-2018-2', NULL, 0, '2018-11-16', 2, 22222, 1),
+(46, 'MSD-SBY-RT-2018-3', NULL, 0, '2018-11-16', 2, 22222, 1),
+(47, 'MSD-SBY-RT-2018-3', 'cap1', 2, '2018-11-16', 2, 22222, 1);
 
 -- --------------------------------------------------------
 
@@ -278,11 +338,13 @@ CREATE TABLE `tbl_stok` (
 
 INSERT INTO `tbl_stok` (`ID_STOK`, `JUMLAH`, `ID_BARANG`, `ID_STORE`) VALUES
 (2, 3, 'cap1', 2),
-(120, 1, 'machine8', 2),
+(120, 6, 'machine8', 2),
 (121, 3, 'machine12', 2),
-(122, 4, 'machine1', 2),
+(122, 8, 'machine1', 2),
 (123, 5, 'machine9', 2),
-(124, 2, 'machine6', 2);
+(124, 2, 'machine6', 2),
+(125, 3, 'machine10', 2),
+(126, 4, 'cap4', 2);
 
 -- --------------------------------------------------------
 
@@ -305,9 +367,11 @@ CREATE TABLE `tbl_toko` (
 --
 
 INSERT INTO `tbl_toko` (`ID_TOKO`, `NAMA_TOKO`, `ALAMAT_TOKO`, `TLP_TOKO`, `KOTA_TOKO`, `EMAIL_TOKO`, `STATUS_TOKO`) VALUES
-(2, 'a', 'a', '07777', 'surabaya', 'aaaa@.com', '1'),
+(1, 'PT MULTIFORTUNA SINARDELTA', 'Jl tegalsari no 50', '087754433', 'surabaya', 'agagagag@gmail.com', '1'),
+(2, 'Hokky BDB', 'Bukit Darmo Boulevard', '08122233345444', 'surabaya', 'Hokkybdb@.com', '1'),
 (7, 'sogo', 'tunjungan', '0833333355', 'sidoarjo', 'hhhhg@.dh', '1'),
-(8, 'metro', 'ciwo', '0089787', 'surabaya', 'metro@g.com', '1');
+(8, 'metro', 'ciwo', '0089787', 'surabaya', 'metro@g.com', '1'),
+(9, 'BEST DENKI PTC', 'jl Mayjen Yono Suyono, Babatan, wiyung, Surabaya', '0317391250', 'Surabaya ', 'PTC@gmail.com', '1');
 
 --
 -- Indexes for dumped tables
@@ -410,12 +474,12 @@ ALTER TABLE `tbl_berita`
 -- AUTO_INCREMENT for table `tbl_pengiriman`
 --
 ALTER TABLE `tbl_pengiriman`
-  MODIFY `ID_PENGIRIMAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `ID_PENGIRIMAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 --
 -- AUTO_INCREMENT for table `tbl_penjaga`
 --
 ALTER TABLE `tbl_penjaga`
-  MODIFY `AI_JAGA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `AI_JAGA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `tbl_penjualan`
 --
@@ -425,22 +489,22 @@ ALTER TABLE `tbl_penjualan`
 -- AUTO_INCREMENT for table `tbl_permintaan`
 --
 ALTER TABLE `tbl_permintaan`
-  MODIFY `ID_PERMINTAAN` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `ID_PERMINTAAN` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `tbl_reture`
 --
 ALTER TABLE `tbl_reture`
-  MODIFY `ID_RETURE` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_RETURE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `tbl_stok`
 --
 ALTER TABLE `tbl_stok`
-  MODIFY `ID_STOK` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `ID_STOK` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 --
 -- AUTO_INCREMENT for table `tbl_toko`
 --
 ALTER TABLE `tbl_toko`
-  MODIFY `ID_TOKO` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID_TOKO` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- Constraints for dumped tables
 --
@@ -464,7 +528,7 @@ ALTER TABLE `tbl_pengiriman`
 --
 ALTER TABLE `tbl_penjaga`
   ADD CONSTRAINT `tbl_penjaga_ibfk_1` FOREIGN KEY (`NIP_JAGA`) REFERENCES `tbl_pegawai` (`NIP`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `tbl_penjaga_ibfk_2` FOREIGN KEY (`ID_TOKO_JAGA`) REFERENCES `tbl_toko` (`ID_TOKO`);
+  ADD CONSTRAINT `tbl_penjaga_ibfk_2` FOREIGN KEY (`ID_TOKO_JAGA`) REFERENCES `tbl_toko` (`ID_TOKO`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tbl_penjualan`

@@ -44,4 +44,42 @@ public function hapus_store($id){
 	$result = $this->db->query($sql);
  }
 
+ public function view_store_jaga()
+  {
+  	$sql = "SELECT
+      tbl_penjaga.AI_JAGA AS AI_JAGA,
+      tbl_pegawai.NAMA_PEG AS NAMA_PEG,
+      tbl_pegawai.LEVEL AS LEVEL,
+  		tbl_toko.NAMA_TOKO AS NAMA_TOKO,
+  		tbl_toko.ALAMAT_TOKO AS ALAMAT_TOKO,
+  		tbl_toko.KOTA_TOKO AS KOTA_TOKO
+  		FROM tbl_penjaga, tbl_toko, tbl_pegawai
+  		WHERE tbl_penjaga.NIP_JAGA=tbl_pegawai.NIP 
+  		AND tbl_penjaga.ID_TOKO_JAGA = tbl_toko.ID_TOKO
+  		AND tbl_pegawai.LEVEL = 2 "
+         ;
+
+     $result = $this->db->query($sql);
+     return $result->result();
+ }
+
+ public function view_store_jaga_detail($kode_jaga)
+  {
+   $sql = "SELECT
+      tbl_penjaga.AI_JAGA AS AI_JAGA,
+      tbl_penjaga.NIP_JAGA AS NIP_JAGA,
+      tbl_penjaga.ID_TOKO_JAGA AS ID_TOKO_JAGA,
+      tbl_pegawai.NAMA_PEG AS NAMA_PEG,
+     tbl_toko.NAMA_TOKO AS NAMA_TOKO,
+     tbl_toko.ALAMAT_TOKO AS ALAMAT_TOKO,
+     tbl_toko.KOTA_TOKO AS KOTA_TOKO
+     FROM tbl_penjaga, tbl_toko, tbl_pegawai
+     WHERE tbl_penjaga.NIP_JAGA=tbl_pegawai.NIP AND tbl_penjaga.ID_TOKO_JAGA = tbl_toko.ID_TOKO AND
+     tbl_penjaga.AI_JAGA = '$kode_jaga'"
+         ;
+
+     $result = $this->db->query($sql);
+     return $result->result();
+ }
+
 }

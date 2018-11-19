@@ -62,7 +62,7 @@
                                         ';}
                     else if ($ctg=='2') { echo'
                                               <option value="1">Admin</option>
-                                              <option value="2" selected>Bp</option>
+                                              <option value="2" selected>Brand Presenter</option>
                                               <option value="3">Team leader</option>
                                               <option value="4">Supervisor</option>
                                              '; }
@@ -113,6 +113,22 @@
                   <label for="inputPassword3" class="col-sm-2 control-label">Date of Birt</label>
                   <div class="col-sm-8">
                     <input type="date" class="form-control" placeholder="Tgl lahir" value="<?=$cetak->TGL_LAHIR ?>" name="tgllahirpeg">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">First Day Working</label>
+                  <div class="col-sm-8">
+                    <input type="date" class="form-control" placeholder="Tgl lahir" value="<?=$cetak->TGL_MASUK ?>" name="tglmasuk">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Assignment</label>
+                  <div class="col-sm-8" >
+                     <?php foreach ($tok->result() as $cetok){ ?>
+                      <?php $set = $cetok->NIP ;?>
+                    <input type="text" class="form-control" placeholder="Tgl lahir" value="<?=$cetok->NAMA_TOKO?>"  readonly>
+                    <?php } ?>
                   </div>
                 </div>
 

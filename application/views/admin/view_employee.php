@@ -31,21 +31,22 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>NIP</th>
                   <th>Name</th>
+                  <th>NIP</th>
                   <th>Employee position</th>
                   <th>Address</th>
                   <th>Telephone</th>
                   <th>E-mail</th>
                   <th>Gender</th>
+                  <th>Assigment</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach($cetak1 as $data1){?>
                   <tr>
-                    <td><?= $data1->NIP?></td>
                     <td><?= $data1->NAMA_PEG?></td>
+                    <td><?= $data1->NIP?></td>
                     <td>
 
                       <?php
@@ -60,13 +61,12 @@
                             }else {
                               echo "Supervisor";
                             }
-
-
                        ?>
                     </td>
                     <td><?= $data1->ALAMAT_PEG?></td>
                     <td><?= $data1->TLP_PEG?></td>
                     <td><?= $data1->EMAIL_PEG?></td>
+
                     <td>              
                       <?php
                           $t = $data1->JENIS_KELAMIN;
@@ -78,6 +78,7 @@
                             }
                           ?>
                     </td>
+                    <td><?= $data1->NAMA_TOKO?></td>
                     <td>
                       <!-- 'admin/products/edit/'.$product->pro_id, -->
                       <a href="<?php echo base_url(); ?>index.php/Admin/edit_employee/<?php echo $data1->NIP; ?>" class="btn btn-primary">Edit</a>

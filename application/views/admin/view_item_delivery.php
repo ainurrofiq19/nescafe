@@ -2,11 +2,15 @@
 
     foreach ($lastcode->result_array() as $code) {
       $printcode = $code['KODE_PENGIRIMAN'];
+    //  // var_dump ($printcode);
+    // die();
     }
     $a = 'MSD-SBY-DO-';
     $b = date('Y-');
-    $x = substr($printcode,16);
-    $i = array($x,1)
+    $c = '00';
+    $x = substr($printcode,18);
+    $i = array($x,0001)
+
   ?>
 
 
@@ -44,7 +48,7 @@
                   <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Kode Pengiriman</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" value="<?= $a.$b?><?=array_sum($i)?>" name="code" readonly>
+                      <input type="text" class="form-control" value="<?= $a.$b.$c?><?=array_sum($i)?>" name="code" readonly>
                     </div>
                   </div>
                   <div class="form-group">
@@ -121,9 +125,8 @@
                     <td><?= $data1->STATUS?></td>
                     <td>
                     <?php 
-                    if ($data1->STATUS == 2 ) { ?>
+                    if ($data1->STATUS == 2 || $data1->STATUS == 3 ) { ?>
                       <a href="<?= base_url("Admin/detail_item_delivery/$data1->KODE_PENGIRIMAN")?>" class="btn btn-success">Detail</a>
-                      <a  class="btn btn-default">Be Accepted</a>
                 <?php    }else{ ?>
                       <a href="<?= base_url("Admin/detail_item_delivery/$data1->KODE_PENGIRIMAN")?>" class="btn btn-success">Detail</a>
                       <a href="<?= base_url("Admin/update_item_delivery/$data1->KODE_PENGIRIMAN")?>" class="btn btn-primary">Update</a>

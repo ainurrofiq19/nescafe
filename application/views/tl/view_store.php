@@ -50,7 +50,6 @@
                     <td>
                       <a href="<?php echo site_url('Tl/form_edit_toko/'.$data1->ID_TOKO);?>" class="btn btn-primary">Edit</a>
                       <a href="<?php echo base_url(); ?>index.php/Tl/hapus_store/<?php echo $data1->ID_TOKO; ?>" class="btn btn-danger"> Delete </a>
-    <button href="<?php site_url('Tl/view_brand_presenter')?>">cok</button>
                     </td
                   </tr>
                 <?php } ?>

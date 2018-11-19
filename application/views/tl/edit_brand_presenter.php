@@ -40,14 +40,14 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Nama Brand Presenter</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Brand Presenter Name</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" placeholder="Nama" value="<?=$cetak->NAMA_PEG ?>" name="namapeg">
                     <input type="hidden" class="form-control" placeholder="telephone" value="<?=$cetak->PASSWORD ?>" name="pass">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Alamat Brand Presenter</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Addressr</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" placeholder="alamat" value="<?=$cetak->ALAMAT_PEG ?>" name="alamatpeg">
                   </div>
@@ -59,32 +59,61 @@
                   </div>
                 </div>
               <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Telephone Brand Presenter</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Telephone</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" placeholder="telephone" value="<?=$cetak->TLP_PEG ?>" name="tlppeg">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">jenis kelamin</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Gender</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" placeholder="jenis kelamin" value="<?=$cetak->JENIS_KELAMIN ?>"name="kelaminpeg">
+                     <select class="form-control"  name="kelaminpeg">
+                      <?php
+
+                      $ctg= $cetak->JENIS_KELAMIN;
+
+
+                      if ($ctg=='l') { echo'
+                                              <option value="l" selected>Male</option>
+                                              <option value="p">Female</option>
+                                        ';}
+                    else if ($ctg=='p') { echo'
+                                              <option value="l">Male</option>
+                                              <option value="p" selected>Female</option>
+                                             '; }
+                      ?> 
+                    </select> 
                   </div>
                 </div>
                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Tgl lahir</label>
+                  <label for="inputPassword3" class="col-sm-2 control-label">Date Of Birth  </label>
                   <div class="col-sm-8">
                     <input type="date" class="form-control" placeholder="Tgl lahir" value="<?=$cetak->TGL_LAHIR ?>" name="tgllahirpeg">
                   </div>
                 </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">First Day Working</label>
+                  <div class="col-sm-8">
+                    <input type="date" class="form-control" placeholder="Tgl lahir" value="<?=$cetak->TGL_MASUK ?>" name="tglmasuk">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Assignment</label>
+                  <div class="col-sm-8" >
+                     <?php foreach ($tok->result() as $cetok){ ?>
+                      <?php $set = $cetok->NIP ;?>
+                    <input type="text" class="form-control" placeholder="Tgl lahir" value="<?=$cetok->NAMA_TOKO?>"  readonly>
+                    <?php } ?>
+                  </div>
+                </div>
 
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">FOTO</label>
-
+                  <label for="inputPassword3" class="col-sm-2 control-label">Photo</label>
+                    <div class="col-sm-8" >
                     <img src="<?= base_url()?>asset/user/<?= $cetak->FOTO_PEG ?>" height="142" width="142">
-
                     <input type="hidden" name="gambarasli" value="<?= $cetak->FOTO_PEG ?>" />
                     <input type="file" name="gambar" size="20" />
-
+                    </div>
 
                 </div>
 

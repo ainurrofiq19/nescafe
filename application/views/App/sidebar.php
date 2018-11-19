@@ -61,7 +61,10 @@
             <li >
               <a href="<?= base_url('Admin/view_item_delivery')?>"><i class="fa fa-laptop"></i>Product delivery</a>
             </li>
-         
+         <li>
+          <a href="<?= base_url('Admin/view_stock')?>"><i class="fa fa-circle-o"></i> View Stock</a>
+        </li>
+        
         <li><a href="<?= base_url('Admin/view_monthly_report')?>"><i class="fa fa-circle-o text-red"></i> <span>monthly report</span></a></li>
                
 
@@ -84,7 +87,7 @@
             <li><a href="<?= base_url('Bp/add_report')?>"><i class="fa fa-circle-o"></i>Add report</a></li>
           </ul>
         </li>
-        <li class="treeview">
+          <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
             <span>Product reture</span>
@@ -96,6 +99,9 @@
             <li><a href="<?= base_url('Bp/view_item_reture')?>"><i class="fa fa-circle-o"></i>view Product reture</a></li>
             <li><a href="<?= base_url('Bp/add_item_reture')?>"><i class="fa fa-circle-o"></i>Add Product reture</a></li>
           </ul>
+        </li>
+         <li>
+          <a href="<?= base_url('Bp/view_stock')?>"><i class="fa fa-circle-o"></i> View Stock</a>
         </li>
                 <?php }elseif($level == "3"){  ?>
 
@@ -125,6 +131,7 @@
             <li><a href="<?= base_url('Tl/add_store')?>"><i class="fa fa-circle-o"></i>Add store</a></li>
           </ul>
         </li>
+        <li><a href="<?= base_url('Tl/view_bp_store')?>"><i class="fa fa-circle-o text-yellow"></i> <span>Manage BP Store</span></a></li>
          <li><a href="<?= base_url('Tl/view_report')?>"><i class="fa fa-circle-o text-yellow"></i> <span>report</span></a></li>
          <li><a href="<?= base_url('Tl/view_monthly_report')?>"><i class="fa fa-circle-o text-red"></i> <span>monthly report</span></a></li>
                  <?php }elseif($level = "4"){ ?>

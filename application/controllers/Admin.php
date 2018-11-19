@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model(array('View_of','M_item','M_item_request','M_employee','M_item_delivery'));
+		$this->load->model(array('View_of','M_item','M_item_request','M_employee','M_item_delivery','M_stock'));
 	}
 
 	public function index()
@@ -124,8 +124,74 @@ class Admin extends CI_Controller {
 
 	public function accepting_item_request()
 	{
-		$this->load->view('template');
+		
+		$usr = $this->session->userdata('nip');
+		$data['jaga'] = $this->db->query("SELECT * FROM tbl_penjaga WHERE NIP_JAGA = '$usr' LIMIT 1");
+		$data['lastcode'] = $this->db->query("SELECT * FROM tbl_permintaan ORDER BY KODE_PERMINTAAN DESC LIMIT 1");
+		$data['kat'] = $this->db->query("SELECT * FROM tbl_toko");
+		$data['bpkat'] = $this->db->query("SELECT * FROM tbl_pegawai WHERE LEVEL = 2 ");
+		$data['cetak1'] = $this->M_item_request->view_item_request();
+		$data['content'] = 'Admin/accepting_request';
+		$this->load->view('template', $data);
+	
+
 	}
+
+
+	public function accept_to_delive ($KODE_PERMINTAAN)
+	{
+
+		$set = $this->db->query("SELECT * FROM tbl_permintaan WHERE KODE_PERMINTAAN = '$KODE_PERMINTAAN' AND NAMA_PERMINTAAN IS NOT NULL ");
+		// var_dump($set);
+		
+		date_default_timezone_set('Asia/Karachi'); # add your city to set local time zone
+		$now = date('Y-m-d');
+
+
+		$ambil_kode = $this->M_item_request->lastcode();
+
+		$lastcode = $ambil_kode->KODE_PENGIRIMAN; 
+		
+	 
+	    $a = 'MSD-SBY-DO-';
+	    $b = date('Y-');
+	    $c = '00';
+	    $x = substr($lastcode,18);
+	 
+	    $kode = $a.$b.$c.($x+1);
+		 
+		 foreach ($set->result_array() as $data1) {
+
+
+		$data  = array(
+			'KODE_PENGIRIMAN'		=> $kode,
+			'NAMA_PENGIRIMAN'		=> $data1['NAMA_PERMINTAAN'],
+			'JUMLAH_PENGIRIMAN'		=> $data1['JUMLAH_PERMINTAAN'],
+			'TGL_PENGIRIMAN'		=> $now,
+			'TOKO_PENGIRIMAN'		=> $data1['TOKO_PERMINTAAN'],
+			'BP_PENGIRIMAN'			=> $data1['BP_PERMINTAAN'],
+			'STATUS_PENGIRIMAN'		=> '3'
+
+		);
+		$this->db->insert('tbl_pengiriman', $data);
+	}
+
+		$sql = "UPDATE tbl_permintaan
+				SET STATUS_PERMINTAAN= 2
+				WHERE KODE_PERMINTAAN ='".$KODE_PERMINTAAN."'
+				";
+
+		$result = $this->db->query($sql);
+	redirect("Admin/accepting_item_request");
+	}
+
+	public function detail_item_request($KODE_PERMINTAAN) {
+		$data['deliv'] = $this->M_item_request->find($KODE_PERMINTAAN);
+		$data['cetak1'] = $this->M_item_request->view_item_request2($KODE_PERMINTAAN);
+		$data['content'] = 'Admin/detail_item_request';
+		$this->load->view('template', $data);
+	}
+
 
 	public function view_employee()
 	{
@@ -154,21 +220,28 @@ class Admin extends CI_Controller {
 				'JENIS_KELAMIN'		=> $this->input->post('kelaminpeg'),
 				'TGL_LAHIR'			=> $now,
 				'FOTO_PEG'			=> $file.'.jpg',
-				'LEVEL'				=> '2',
+				'LEVEL'				=> $this->input->post('jabatan'),
 				'AKTIF'				=> 'y'
 			);
+			$data2 = array (
+				'NIP_JAGA'				=> $this->input->post('nip'),
+				'ID_TOKO_jaga'			=> $this->input->post('toko')
+				
+			);
+			
 
 			$config['upload_path']          = './asset/user/';
 			$config['allowed_types']        = 'jpg';
 			$config['max_size']             = 10000;
 			$this->load->library('upload', $config);
 			$this->upload->do_upload('gambar');
-
+			
 			$this->db->insert('tbl_pegawai', $data);
+			$this->db->insert('tbl_penjaga', $data2);
 			redirect('admin/view_employee');
 		}
 
-		$data['kat'] = $this->db->query("SELECT * FROM tbl_pegawai GROUP BY LEVEL" );
+		$data['kat'] = $this->db->query("SELECT * FROM tbl_toko");
 		$data['content'] = 'Admin/add_employee';
 		$this->load->view('template', $data);
 	}
@@ -215,7 +288,8 @@ class Admin extends CI_Controller {
 				'TLP_PEG'			=> $this->input->post('tlppeg'),
 				'JENIS_KELAMIN'		=> $this->input->post('kelaminpeg'),
 				'TGL_LAHIR'			=> $this->input->post('tgllahirpeg'),
-				'LEVEL'				=> '2',
+				'TGL_MASUK'			=> $this->input->post('tglmasuk'),
+				'LEVEL'				=> $this->input->post('jabatan'),
 				'AKTIF'				=> 'y'
 			);
 			$this->db->update('tbl_pegawai', $data, "NIP = '$kode_bp'");
@@ -232,19 +306,36 @@ class Admin extends CI_Controller {
 				'TLP_PEG'			=> $this->input->post('tlppeg'),
 				'JENIS_KELAMIN'		=> $this->input->post('kelaminpeg'),
 				'TGL_LAHIR'			=>$this->input->post('tgllahirpeg'),
+				'TGL_MASUK'			=> $this->input->post('tglmasuk'),
 				'FOTO_PEG'			=> $file.'.jpg',
-				'LEVEL'				=> '2',
+				'LEVEL'				=> $this->input->post('jabatan'),
 				'AKTIF'				=> 'y'
 			);
 
 
 			$this->db->update('tbl_pegawai', $data, "NIP = '$kode_bp'");
-			redirect('admin/edit_employee/'.$file);
+			redirect('admin/view_employee/'.$file);
 		}
 
 		redirect('admin/view_employee');
 	}
+$data['tok'] = $this->db->query("SELECT tbl_pegawai.NIP AS NIP, 
+ 		tbl_pegawai.NAMA_PEG AS NAMA_PEG, 
+ 		tbl_pegawai.ALAMAT_PEG AS ALAMAT_PEG,
+ 		tbl_pegawai.TLP_PEG AS TLP_PEG,
+ 		tbl_pegawai.EMAIL_PEG AS EMAIL_PEG,
+		tbl_pegawai.JENIS_KELAMIN AS JENIS_KELAMIN,
+		tbl_pegawai.TGL_LAHIR AS TGL_LAHIR,
+		tbl_toko.NAMA_TOKO AS NAMA_TOKO,
+		tbl_pegawai.TGL_MASUK AS TGL_MASUK,
+		tbl_pegawai.FOTO_PEG AS FOTO_PEG,
+		tbl_pegawai.LEVEL AS LEVEL
 
+ 		FROM tbl_pegawai,tbl_penjaga,tbl_toko
+        WHERE NIP = '$kode_bp'
+        AND tbl_pegawai.NIP=tbl_penjaga.NIP_JAGA
+        AND tbl_penjaga.ID_TOKO_JAGA=tbl_toko.ID_TOKO
+        and tbl_pegawai.AKTIF='y'");
 	$data['kat'] = $this->db->query("SELECT * FROM tbl_pegawai GROUP BY LEVEL" );
 	$data['content'] = 'Admin/edit_employee';
 	$data['bp'] = $this->db->query("SELECT * FROM tbl_pegawai WHERE NIP = '$kode_bp'");
@@ -259,6 +350,23 @@ function hapus_employee($NIP){
     }
 
 	public function detail_employee($NIP) {
+$data['tok'] = $this->db->query("SELECT tbl_pegawai.NIP AS NIP, 
+ 		tbl_pegawai.NAMA_PEG AS NAMA_PEG, 
+ 		tbl_pegawai.ALAMAT_PEG AS ALAMAT_PEG,
+ 		tbl_pegawai.TLP_PEG AS TLP_PEG,
+ 		tbl_pegawai.EMAIL_PEG AS EMAIL_PEG,
+		tbl_pegawai.JENIS_KELAMIN AS JENIS_KELAMIN,
+		tbl_pegawai.TGL_LAHIR AS TGL_LAHIR,
+		tbl_toko.NAMA_TOKO AS NAMA_TOKO,
+		tbl_pegawai.TGL_MASUK AS TGL_MASUK,
+		tbl_pegawai.FOTO_PEG AS FOTO_PEG,
+		tbl_pegawai.LEVEL AS LEVEL
+
+ 		FROM tbl_pegawai,tbl_penjaga,tbl_toko
+        WHERE NIP = '$NIP'
+        AND tbl_pegawai.NIP=tbl_penjaga.NIP_JAGA
+        AND tbl_penjaga.ID_TOKO_JAGA=tbl_toko.ID_TOKO
+        and tbl_pegawai.AKTIF='y'");
 
 		$data['bp'] = $this->M_employee->find($NIP);
 		// $data['cetak1'] = $this->M_brand_presenter->detail_brand_presenter();
@@ -495,6 +603,29 @@ public function hapus_item_delivery2($id,$kode_id)
 		$data['content'] = 'Admin/detail_item_delivery';
 		$this->load->view('template', $data);
 	}
+
+	public function view_stock()
+	{
+		$data['cetak1'] = $this->View_of->viewall("tbl_toko");
+		$data['a'] = 2;
+		$data['content'] = 'Admin/view_stock';
+		$this->load->view('template', $data);
+	}
+
+	public function view_stock_toko()
+	{
+		if ($this->input->server('REQUEST_METHOD') == 'POST') {
+			$data['cetak1'] = $this->View_of->viewall("tbl_toko");
+			$data['kode_toko'] = $this->input->post('toko');
+			$data['a'] = 0;
+			$data['cetak2'] = $this->M_stock->view_all_stock($data['kode_toko']);
+			$data['cetak3'] = $this->M_stock->view_all_stock2($data['kode_toko']);
+			$data['content'] = 'Admin/view_stock';
+			$this->load->view('template', $data);
+		}
+
+	}
+
 	public function view_mothly_report()
 	{
 		$this->load->view('template');

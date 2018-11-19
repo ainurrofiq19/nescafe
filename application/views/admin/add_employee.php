@@ -52,7 +52,7 @@
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Employee position</label>
                   <div class="col-sm-8">
-                    <select class="form-control" name="kategori">
+                    <select class="form-control" name="jabatan">
                      
                         <option value="1">Admin</option>
                         <option value="2">Brand Presenter</option>
@@ -98,6 +98,22 @@
                   <label for="inputPassword3" class="col-sm-2 control-label"> Date of Brit</label>
                   <div class="col-sm-8">
                     <input type="date" class="form-control" placeholder="Date of Britr" name="tgllahirpeg">
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Tgl MASUk</label>
+                  <div class="col-sm-8">
+                    <input type="date" class="form-control" placeholder="Tgl lahir" name="tglmasuk">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Penempatan</label>
+                  <div class="col-sm-8" >
+                    <select class="form-control" name="toko">
+                      <?php foreach($kat->result_array() as $cat){ ?>
+                        <option value="<?= $cat['ID_TOKO'] ?>"><?= $cat['NAMA_TOKO'] ?></option>
+                      <?php } ?>
+                    </select> 
                   </div>
                 </div>
                 <div class="form-group">

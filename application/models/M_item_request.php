@@ -71,6 +71,18 @@ public function view_item_request()
       }
 
      }
+
+     public function lastcode(){
+      $sql = "SELECT * FROM tbl_pengiriman ORDER BY KODE_PENGIRIMAN DESC LIMIT 1";
+      $result = $this->db->query($sql);
+          if ($result->num_rows() > 0 )
+          {
+            return $result->row();
+          } else {
+            return array();
+          }
+     }
+
     public function cancel_item_request($kode_minta){
      $sql= "DELETE FROM tbl_permintaan WHERE KODE_PERMINTAAN ='$kode_minta'";
      $result = $this->db->query($sql);

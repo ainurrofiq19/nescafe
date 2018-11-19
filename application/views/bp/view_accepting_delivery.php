@@ -56,7 +56,7 @@
 
                        ?>
                     <td>
-                      <?php if ($data1->STATUS_PENGIRIMAN == "1"){ ?>
+                      <?php if ($data1->STATUS_PENGIRIMAN == "1"||$data1->STATUS_PENGIRIMAN == "3" ){ ?>
                         <a href="<?= base_url("Bp/detail_item_delivery/$data1->KODE_PENGIRIMAN")?>" class="btn btn-primary">Detail</a>
                         <a href="<?= base_url('Bp/accepting_item_delivery2/'.$data1->KODE_PENGIRIMAN);?>" class="btn btn-success"> Accept </a>
                       <?php }elseif ($data1->STATUS_PENGIRIMAN == "2") { ?>
