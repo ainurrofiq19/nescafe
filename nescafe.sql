@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2018 at 08:28 PM
+-- Generation Time: Nov 19, 2018 at 08:35 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -40,27 +40,6 @@ CREATE TABLE `tbl_berita` (
 INSERT INTO `tbl_berita` (`ID_BERITA`, `JUDUL_BERITA`, `ISI_BERITA`, `FOTO_BERITA`) VALUES
 (3, 'aa', '<p>sddffsf</p>', 'aa.jpg'),
 (4, 'event', '<p>promo yang</p>\r\n<p>terbai</p>\r\n<p>naewlggkgd</p>\r\n<p>&nbsp;</p>', 'event.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_detail_permintaan`
---
-
-CREATE TABLE `tbl_detail_permintaan` (
-  `ID_PERMINTAAN` int(11) NOT NULL,
-  `KODE_PERMINTAAN` varchar(255) NOT NULL,
-  `NAMA_PERMINTAAN` varchar(255) NOT NULL,
-  `QTY` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_detail_permintaan`
---
-
-INSERT INTO `tbl_detail_permintaan` (`ID_PERMINTAAN`, `KODE_PERMINTAAN`, `NAMA_PERMINTAAN`, `QTY`) VALUES
-(1, 'MSD-SBY-DO-2018-1', 'cap1', 5),
-(1, 'MSD-SBY-DO-2018-1', 'cap2', 4);
 
 -- --------------------------------------------------------
 
