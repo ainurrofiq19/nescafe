@@ -22,6 +22,27 @@ public function view_item_request()
     return $result->result();
   }
 
+public function view_item_request1($toko)
+  {
+    $sql = "SELECT KODE_PERMINTAAN,
+      tbl_permintaan.ID_PERMINTAAN AS ID_PERMINTAAN,
+      tbl_permintaan.NAMA_PERMINTAAN AS NAMA_PERMINTAAN,
+      tbl_permintaan.JUMLAH_PERMINTAAN AS QTY,
+      tbl_permintaan.TGL_PERMINTAAN AS TANGGAL,
+      tbl_toko.NAMA_TOKO AS TOKO,
+      tbl_pegawai.NAMA_PEG AS BP,
+      tbl_permintaan.STATUS_PERMINTAAN AS STATUS
+      FROM tbl_permintaan , tbl_item , tbl_pegawai , tbl_toko
+      WHERE tbl_permintaan.TOKO_PERMINTAAN=tbl_toko.ID_TOKO
+        AND tbl_permintaan.BP_PERMINTAAN=tbl_pegawai.NIP
+        AND TOKO_PERMINTAAN = $toko
+      GROUP BY KODE_PERMINTAAN
+      ORDER BY tbl_permintaan.TGL_PERMINTAAN  desc";
+
+    $result = $this->db->query($sql);
+    return $result->result();
+  }
+
   public function view_item_request2($where)
    {
    	$sql = "SELECT tbl_permintaan.ID_PERMINTAAN AS KODE_PERMINTAAN, ID_PERMINTAAN,

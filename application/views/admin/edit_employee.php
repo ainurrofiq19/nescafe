@@ -49,7 +49,7 @@
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Employee position</label>
                   <div class="col-sm-8">
-                    <select class="form-control"  name="kategori">
+                    <select class="form-control"  name="jabatan">
                       <?php
 
                       $ctg=$cetak->LEVEL;
@@ -106,7 +106,22 @@
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Gender</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" placeholder="jenis kelamin"value="<?=$cetak->JENIS_KELAMIN ?>" name="kelaminpeg">
+                     <select class="form-control"  name="kelaminpeg">
+                      <?php
+
+                      $ctg= $cetak->JENIS_KELAMIN;
+
+
+                      if ($ctg=='l') { echo'
+                                              <option value="l" selected>Male</option>
+                                              <option value="p">Female</option>
+                                        ';}
+                    else if ($ctg=='p') { echo'
+                                              <option value="l">Male</option>
+                                              <option value="p" selected>Female</option>
+                                             '; }
+                      ?> 
+                    </select> 
                   </div>
                 </div>
                <div class="form-group">

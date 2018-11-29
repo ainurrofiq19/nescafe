@@ -84,7 +84,7 @@ public function find($KODE_PENGIRIMAN){
   function view_accepting_delivery($where)
   {
      $this->db->select("*");
-     $this->db->from("tbl_pengiriman");
+     $this->db->from("tbl_pengiriman,tbl_pegawai");
      $this->db->where("TOKO_PENGIRIMAN", $where);
      $this->db->group_by("KODE_PENGIRIMAN");
      $query = $this->db->get();

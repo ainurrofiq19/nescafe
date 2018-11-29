@@ -43,7 +43,7 @@
                   <tr>
                     <td><?= $data1->KODE_PENGIRIMAN?></td>
                     <td><?= $data1->TGL_PENGIRIMAN?></td>
-                    <td><?= $data1->BP_PENGIRIMAN?></td>
+                    <td><?= $data1->NAMA_PEG?></td>
                     <td>
                         <?php
                           $t = $data1->STATUS_PENGIRIMAN;

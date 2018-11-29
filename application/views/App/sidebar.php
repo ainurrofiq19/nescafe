@@ -74,20 +74,7 @@
         
             <li><a href="<?= base_url('Bp/accepting_item_delivery')?>"><i class="fa fa-pie-chart"></i>accepting Product delivery</a></li>
         
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>report</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?= base_url('Bp/view_report')?>"><i class="fa fa-circle-o"></i>view report</a></li>
-            <li><a href="<?= base_url('Bp/add_report')?>"><i class="fa fa-circle-o"></i>Add report</a></li>
-          </ul>
-        </li>
-         
+         <li><a href="<?= base_url('Bp/view_item_sellout')?>"><i class="fa fa-circle-o"></i> View Sell Out</a></li>
           <li><a href="<?= base_url('Bp/view_item_reture')?>"><i class="fa fa-circle-o"></i> Product reture</a></li>
           
          <li>

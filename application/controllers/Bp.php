@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Bp extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model(array('View_of','M_item_request','M_item_delivery','M_stock','M_item_reture'));
+		$this->load->model(array('View_of','M_item_request','M_item_delivery','M_stock','M_item_reture','M_sellout'));
 	}
 
 	public function index()
@@ -17,6 +17,10 @@ class Bp extends CI_Controller {
 	public function view_item_request()
 	{
 		$usr = $this->session->userdata('nip');
+		$test = $this->db->query("SELECT * FROM tbl_penjaga WHERE NIP_JAGA = '$usr' LIMIT 1");
+		foreach ($test->result_array() as $data) {
+			$data['toko'] = $data['ID_TOKO_JAGA'];
+		}
 		$data['jaga'] = $this->db->query("SELECT * 
 										FROM tbl_penjaga , tbl_pegawai , tbl_toko 
      									 WHERE tbl_penjaga.NIP_JAGA=tbl_pegawai.NIP
@@ -27,7 +31,7 @@ class Bp extends CI_Controller {
 		$data['lastcode'] = $this->db->query("SELECT * FROM tbl_permintaan ORDER BY KODE_PERMINTAAN DESC LIMIT 1");
 		$data['kat'] = $this->db->query("SELECT * FROM tbl_toko");
 		$data['bpkat'] = $this->db->query("SELECT * FROM tbl_pegawai WHERE LEVEL = 2 ");
-		$data['cetak1'] = $this->M_item_request->view_item_request();
+		$data['cetak1'] = $this->M_item_request->view_item_request1($data['toko']);
 		$data['content'] = 'Bp/view_item_request';
 		$this->load->view('template', $data);
 	}
@@ -557,13 +561,211 @@ public function view_stock()
 		$this->load->view('template', $data);
 	}
 
-	public function view_report()
+	public function view_item_sellout()
 	{
-		$this->load->view('template');
+		$usr = $this->session->userdata('nip');
+		$data['jaga'] = $this->db->query(
+			"SELECT * FROM tbl_penjaga
+			WHERE NIP_JAGA = '$usr'
+			LIMIT 1");
+			$jaga = $this->db->query("SELECT * FROM tbl_penjaga WHERE NIP_JAGA = '$usr' LIMIT 1");
+			foreach ($jaga->result() as $key) {
+				$tok = $key->ID_TOKO_JAGA;
+			}
+
+		$data['cetak1'] = $this->M_sellout->view_item_sellout($tok);
+		$data['content'] = 'Bp/view_item_sellout';
+		$this->load->view('template', $data);
 	}
 
-		public function add_report()
+	public function add_sellout_date()
 	{
-		$this->load->view('template');
+		 $tgl = $this->input->post('tgl');
+		 $toko = $this->input->post('toko');
+
+		$check = $this->db->query("SELECT * FROM tbl_laporan WHERE LAPORAN_DATE = '$tgl' AND TOKO_JUAL = '$toko' LIMIT 1")->num_rows();
+		if ($check == 1) {
+			echo "Tanggal Sudah pernah ditambahkan";
+			redirect('Bp/view_item_sellout');
+		}else {
+			$data = array (
+				'LAPORAN_DATE'		=> $this->input->post('tgl'),
+				'TOKO_JUAL'		=> $this->input->post('toko'),
+			);
+
+			$this->db->insert('tbl_laporan', $data);
+			redirect('Bp/add_sellout_item/'."$tgl");
+		}
+
 	}
+
+	public function add_sellout_item($kode_lapor)
+	{
+
+		$data['code'] = $kode_lapor;
+
+		if ($this->input->server('REQUEST_METHOD') == 'POST') {
+			$tanggal = date("Y-m-d");
+			$checkitem = $this->input->post('item');
+			$data = array (
+
+				'ID_LAPORAN'		=> $this->input->post('ai_lapor'),
+				'ITEM_JUAL' 	=> $this->input->post('item'),
+				'HARGA_JUAL' 	=> $this->input->post('harga'),
+				'JUMLAH_JUAL' 	=> $this->input->post('jumlah'),
+			);
+			$set_ai_lapor = $this->input->post('ai_lapor');
+			$brg = $this->input->post('item');
+			$tok = $this->input->post('toko');
+			$checkjumlah = $this->input->post('jumlah');
+			$check = $this->db->query("SELECT * FROM tbl_isi_laporan WHERE ID_LAPORAN = '$set_ai_lapor' AND ITEM_JUAL = '$checkitem'");
+			if ($check->num_rows() == 0) {
+
+				$stock = $this->db->query("SELECT * FROM tbl_stok WHERE ID_BARANG = '$brg' AND ID_STORE = '$tok' LIMIT 1");
+
+				foreach ($stock->result() as $key1) {
+					$jstok = $key1->JUMLAH;
+				}
+
+					if ($checkjumlah > $jstok) {
+						echo "string";
+					}else{
+						$this->db->insert('tbl_isi_laporan', $data);
+					}
+
+			}else {
+				$x = $this->input->post('id');
+				$y = $this->input->post('jumlah');
+				$this->db->query("UPDATE tbl_isi_laporan SET JUMLAH_JUAL = JUMLAH_JUAL + $y WHERE AI_ISI_LAPORAN = '$x'");
+			}
+			redirect('Bp/add_sellout_item/'.$kode_lapor);
+		}
+
+		$set = $this->db->query("SELECT * FROM tbl_laporan WHERE LAPORAN_DATE = '$kode_lapor'");
+		foreach ($set->result() as $print) {
+			$data['toko'] = $print->TOKO_JUAL;
+			$data['ai_lapor'] = $print->AI_LAPORAN;
+			$data['tgl_lapor'] = $print->LAPORAN_DATE;
+		}
+
+		$usr = $this->session->userdata('nip');
+		$data['jaga'] = $this->db->query("SELECT * FROM tbl_penjaga WHERE NIP_JAGA = '$usr' LIMIT 1");
+		$jaga = $this->db->query("SELECT * FROM tbl_penjaga WHERE NIP_JAGA = '$usr' LIMIT 1");
+		foreach ($jaga->result() as $key) {
+			$tok = $key->ID_TOKO_JAGA;
+		}
+		$data['itkat'] = $this->db->query("SELECT * FROM tbl_stok WHERE ID_STORE = '$tok' ");
+
+		$data['cetak1'] = $this->M_sellout->view_item_sellout2($kode_lapor);
+
+		$data['content'] = 'Bp/add_item_sellout';
+		$this->load->view('template', $data);
+
+	}
+
+	public function update_item_sellout($tgl_lapor,$kode_lapor)
+	{
+		$data['tanda'] = 0;
+		$data['code'] = $kode_lapor;
+
+		$set = $this->db->query("SELECT * FROM tbl_laporan WHERE LAPORAN_DATE = '$kode_lapor'");
+		foreach ($set->result() as $print) {
+			$data['toko'] = $print->TOKO_JUAL;
+			$data['ai_lapor'] = $print->AI_LAPORAN;
+			$data['tgl_lapor'] = $print->LAPORAN_DATE;
+		}
+
+		$usr = $this->session->userdata('nip');
+		$data['jaga'] = $this->db->query("SELECT * FROM tbl_penjaga WHERE NIP_JAGA = '$usr' LIMIT 1");
+		$jaga = $this->db->query("SELECT * FROM tbl_penjaga WHERE NIP_JAGA = '$usr' LIMIT 1");
+		foreach ($jaga->result() as $key) {
+			$tok = $key->ID_TOKO_JAGA;
+		}
+		$data['itkat'] = $this->db->query("SELECT * FROM tbl_stok WHERE ID_STORE = '$tok' ");
+		$data['tanda'] = $kode_lapor;
+		$data['cetak1'] = $this->M_sellout->view_item_sellout2($kode_lapor);
+		$data['content'] = 'Bp/update_item_sellout';
+		$this->load->view('template', $data);
+	}
+
+	function cancel_sellout($id,$toko)
+	{
+		$kode_kirim = $this->uri->segment(3);
+		$this->M_sellout->cancel_sellout($id,$toko) ;
+		redirect('Bp/view_item_sellout');
+	}
+
+	public function hapus_item_sellout2($id,$kode_id)
+	{
+		$this->db->delete('tbl_isi_laporan', array('AI_ISI_LAPORAN' => $id));
+		redirect('Bp/add_sellout_item/'.$kode_id);
+	}
+
+	public function export($tgl)
+{
+
+$cetak = $this->M_sellout->view_item_sellout2($tgl);
+// Create new Spreadsheet object
+$spreadsheet = new Spreadsheet();
+
+// Set document properties
+$spreadsheet->getProperties()->setCreator('Andoyo - Java Web Media')
+->setLastModifiedBy('Andoyo - Java Web Medi')
+->setTitle('Office 2007 XLSX Test Document')
+->setSubject('Office 2007 XLSX Test Document')
+->setDescription('Test document for Office 2007 XLSX, generated using PHP classes.')
+->setKeywords('office 2007 openxml php')
+->setCategory('Test result file');
+
+// Add some data
+$spreadsheet->setActiveSheetIndex(0)
+->setCellValue('A1', 'LAPORAN PENJUALAN')
+->setCellValue('A2', 'TANGGAL :'.$tgl)
+->setCellValue('A4', 'NAMA ITEM')
+->setCellValue('B4', 'TERJUAL')
+->setCellValue('C4', 'QTY')
+->setCellValue('D4', 'TOTAL')
+;
+
+// Miscellaneous glyphs, UTF-8
+$hargatotal = 0 ; $jumlahtotal = 0 ;$total = 0 ;
+$i=5; foreach($cetak as $cetak_detail) {
+	$hargatotal += $cetak_detail->HARGA_JUAL;
+	$jumlahtotal += $cetak_detail->JUMLAH_JUAL;
+	$total += $cetak_detail->JUMLAH_JUAL*$cetak_detail->HARGA_JUAL;
+	$tot = $cetak_detail->JUMLAH_JUAL*$cetak_detail->HARGA_JUAL;
+
+$spreadsheet->setActiveSheetIndex(0)
+->setCellValue('A'.$i, $cetak_detail->ITEM_JUAL)
+->setCellValue('B'.$i, $cetak_detail->HARGA_JUAL)
+->setCellValue('C'.$i, $cetak_detail->JUMLAH_JUAL)
+->setCellValue('D'.$i, $tot);
+
+$i++;
+}
+
+// Rename worksheet
+$spreadsheet->getActiveSheet()->setTitle('Report Excel '.date('d-m-Y H'));
+
+// Set active sheet index to the first sheet, so Excel opens this as the first sheet
+$spreadsheet->setActiveSheetIndex(0);
+
+// Redirect output to a client’s web browser (Xlsx)
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename="Report Excel.xlsx"');
+header('Cache-Control: max-age=0');
+// If you're serving to IE 9, then the following may be needed
+header('Cache-Control: max-age=1');
+
+// If you're serving to IE over SSL, then the following may be needed
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
+header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+header('Pragma: public'); // HTTP/1.0
+
+$writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+$writer->save('php://output');
+exit;
+	}
+
 }

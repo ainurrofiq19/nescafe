@@ -113,7 +113,17 @@
                   <td><?= $data1->TANGGAL?></td>
                   <td><?= $data1->TOKO?></td>
                   <td><?= $data1->BP?></td>
-                  <td><?= $data1->STATUS?></td>               
+                  <td>
+                        <?php
+                          $t = $data1->STATUS;
+
+                            if ($t =='1') {
+                              echo "Request";
+                            } elseif ($t =='2') {
+                              echo "Be Accepted";
+                            }
+
+                       ?></td>               
                   <td>
                 
                   

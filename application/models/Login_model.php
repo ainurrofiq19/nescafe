@@ -12,6 +12,7 @@ class Login_model extends CI_Model{
  public function login($username, $password)
  {
 		 $this->db->where('NIP', $username);
+		 // $this->db->where('EMAIL_PEG', $username);
 		 $this->db->where('PASSWORD', md5($password));
 		 return $this->db->get($this->table);
  }
