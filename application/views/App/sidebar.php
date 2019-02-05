@@ -3,11 +3,11 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
+      <div class="user-panel" >
+        <div class="pull-left image" style="height: 2.1cm">
           <img src="<?= base_url()?>asset/user/<?=$this->session->userdata('gambar')?>" class="img-circle" alt="User Image">
         </div>
-        <div class="pull-left info">
+        <div class="pull-left info" >
            <p>
             <?php
               echo $this->session->userdata('nickname');
@@ -15,8 +15,21 @@
 
             ?>
 
+         
+          <p>
+            <?php
+              $level = $this->session->userdata('level');
+              $ctg=$level;
+
+                      if ($ctg=='1') { echo'Admin';}
+                      else if ($ctg=='2') { echo'Brand Presenter'; }
+                      else if ($ctg=='3') { echo'Team leader'; }
+                      else if ($ctg=='4') { echo'Supervisor'; }
+            ?>
+ 
           </p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
